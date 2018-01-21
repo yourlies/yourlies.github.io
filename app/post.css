@@ -101,7 +101,7 @@ pre .xml .cdata {
   border-bottom: 3px solid #666;
 }
 .post h1 {
-  font-size: 32px;
+  font-size: 28px;
   margin: 0 0 25px;
   letter-spacing: 1px;
 }
@@ -120,6 +120,9 @@ pre .xml .cdata {
 }
 .post h3 {
   margin: 30px 0 15px;
+  border-bottom: 1px dashed #42b983;
+  padding-bottom: 2px;
+  color: #42b983;
 }
 .post .date {
   font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
@@ -127,6 +130,7 @@ pre .xml .cdata {
   color: #999;
   margin: 0 0 15px;
   letter-spacing: 1px;
+  border-bottom: 0;
 }
 .post .desc {
   margin-bottom: 100px;
