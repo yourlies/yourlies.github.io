@@ -125,8 +125,14 @@ pre .xml .cdata {
   font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
   font-size: 13px;
   color: #999;
-  margin: 0 0 100px;
+  margin: 0 0 15px;
   letter-spacing: 1px;
+}
+.post .desc {
+  margin-bottom: 100px;
+}
+.post .desc a {
+  border-bottom: 2px solid #999;
 }
 .post .content {
   text-align: left;
@@ -286,7 +292,10 @@ pre .xml .cdata {
   }
   .post .date {
     font-size: 12px;
-    margin: 0 0 70px;
+    margin: 0 0 20px;
+  }
+  .post .desc {
+    margin-bottom: 70px;
   }
   .post .content {
     font-size: 15px;
