@@ -136,7 +136,8 @@ pre .xml .cdata {
   margin-bottom: 100px;
 }
 .post .desc a {
-  border-bottom: 2px solid #999;
+  color: #f66;
+  border-bottom: 2px solid #f66;
 }
 .post .content {
   text-align: left;

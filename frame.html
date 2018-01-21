@@ -23,7 +23,7 @@
           <h1>如何做一个mvvm框架</h1>
           <h3 class="date">1/21 2018</h3>
           <p class="desc">
-            自己写博客的时候，用的js太冗长太拖沓了，而需求只是一些简单功能和操作，并不需要那么复杂的东西，于是就折腾出了一个非常轻量的框架，详见
+            自己写博客的时候，用的js太冗长太拖沓了，而需求只是一些简单功能和操作，并不需要那么复杂的东西，于是就折腾出了一个非常轻量的框架，这里只做简单的介绍，不做详细的代码讲解，具体可以看我的写的
             <a target="_blank" href="//yourlies.github.io/rain-wiki/dist/#/mvvm">文档</a>
           </p>
           <div class="content">
@@ -56,12 +56,16 @@
               更新数据
             </h3>
             <p>主要是指，当数据更新的时候，能够自动的执行相应视图更新的操作，这样的数据关联关系，称之为依赖</p>
+            <p>同样的，将数据更新导致视图重新渲染的过程封装成函数，称之为观察函数</p>
+            <figure class="highlight html"><table><tbody><tr><td class="code">
+              <pre>&lt;script&gt;<br>  const observer = function () {<br>    if (updateData()) {<br>      updateView();<br>    }<br>  }<br>&lt;/script&gt;<br></pre>
+            </td></tr></tbody></table></figure>
             <ul>
               <li>有用Object.defineProperty进行依赖收集的</li>
               <li>也有用es6的Proxy进行依赖收集的</li>
-              <li>其他自定义的渲染方法</li>
+              <li>有一些使用脏检查</li>
+              <li>或者也可以显示的定义更新（本框架采用的办法</li>
             </ul>
-            <p>但无论采用何种办法，在函数式的视角里，只需要有一个函数，能负责将指定变量，渲染出唯一的输出即可</p>
           </div>
           <a id="older" class="blog-nav" href="/2015/10/25/vuejs-re-introduction/">OLDER&nbsp;&gt;</a>
         </div>
