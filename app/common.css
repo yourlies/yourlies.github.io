@@ -9,12 +9,17 @@ body {
   color: #666;
   margin: 0;
 }
+::-webkit-scrollbar {
+  position: absolute;
+  display: none;
+}
 img {
   border: none;
 }
 a {
   color: #666;
   text-decoration: none;
+  -webkit-transition: color 0.2s ease, border-color 0.2s ease;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .header {
