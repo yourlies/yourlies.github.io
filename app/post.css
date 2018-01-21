@@ -274,7 +274,7 @@ pre .xml .cdata {
   }
   .post h1 {
     font-size: 24px;
-    margin: 0 0 30px;
+    margin: 0 0 10px;
   }
   .post h2 {
     font-size: 20px;
@@ -286,7 +286,7 @@ pre .xml .cdata {
   }
   .post .date {
     font-size: 12px;
-    margin: 0 0 20px;
+    margin: 0 0 70px;
   }
   .post .content {
     font-size: 15px;
