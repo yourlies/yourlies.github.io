@@ -17,7 +17,7 @@
     this.vx = Math.random() * 5 + 5;
     this.vy = Math.random() * 5 + 20;
     this.top = Math.random() * 10 + 10;
-    this.left = Math.random() * 900 + 100;
+    this.left = Math.random() * 900;
     document.body.appendChild(this.raindrop);
   }
 
