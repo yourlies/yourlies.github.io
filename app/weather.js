@@ -14,8 +14,8 @@
   }
 
   Rain.prototype.appear = function () {
-    this.vx = Math.random() * 5 + 5;
     this.vy = Math.random() * 5 + 20;
+    this.vx = this.vy / 2;
     this.top = Math.random() * 10 + 10;
     this.left = Math.random() * 900;
     document.body.appendChild(this.raindrop);
@@ -23,9 +23,9 @@
 
   Rain.prototype.render = function () {
     this.vy = this.vy + 1 / 6;
-    this.vx = this.vy / 2;
     this.top = this.vy + this.top;
     this.left = this.vx + this.left;
+    this.rotate = (Math.acos(this.vx / this.vy) / Math.PI) * 180;
   }
 
   Rain.prototype.update = function () {
