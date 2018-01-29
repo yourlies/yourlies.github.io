@@ -9,6 +9,12 @@ body {
   color: #666;
   margin: 0;
 }
+#canv {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
 ::-webkit-scrollbar {
   position: absolute;
   display: none;
