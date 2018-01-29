@@ -2,7 +2,7 @@
   color: #999;
 }
 pre {
-  color: #525252;
+  color: #eee;
 }
 pre .function .keyword,
 pre .constant {
@@ -127,7 +127,7 @@ pre .xml .cdata {
 .post .date {
   font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
   font-size: 13px;
-  color: #999;
+  color: #ddd;
   margin: 0 0 15px;
   letter-spacing: 1px;
   border-bottom: 0;
@@ -202,7 +202,7 @@ pre .xml .cdata {
   overflow-x: auto;
   text-align: left;
   padding: 15px 25px;
-  background-color: #f6f6f6;
+  background-color: #333;
   line-height: 1.5em;
 }
 .post .content .code pre {

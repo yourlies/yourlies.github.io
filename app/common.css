@@ -6,7 +6,8 @@ body {
   font-weight: 400;
   font-size: 16px;
   word-spacing: 1px;
-  color: #666;
+  background-color: #000;
+  color: #eee;
   margin: 0;
 }
 #canv {
@@ -35,7 +36,7 @@ a {
 }
 .header a {
   font-size: 20px;
-  color: #444;
+  color: #ddd;
 }
 .links {
   text-align: center;
@@ -62,7 +63,7 @@ h5,
 h6 {
   font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
   font-weight: 400;
-  color: #444;
+  color: #ddd;
 }
 .main {
   max-width: 600px;

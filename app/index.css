@@ -23,14 +23,14 @@
   margin-left: 120px;
 }
 .main h2 a {
-  color: #444;
+  color: #ccc;
 }
 .main h2 a:hover {
   color: #f33;
 }
 .main h3 {
   font-size: 13px;
-  color: #999;
+  color: #ccc;
   position: absolute;
   left: 0;
   top: 33px;
