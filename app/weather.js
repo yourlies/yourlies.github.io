@@ -1,78 +1,78 @@
-    ;(function (window, undefined) {
-      var canvas = document.getElementById('canv')
-      var ctx = canvas.getContext('2d')
-      var canvasW = window.innerWidth
-      var canvasH = window.innerHeight
-      var particles = []
-      var maxParticles = 500
+(function () {
+  var Nature = {};
+  Nature.scene = document.getElementById('canv');
+  Nature.camera = Nature.scene.getContext('2d');
+  Nature.entity = 100;
+  Nature.particles = [];
+  Nature.width = window.innerWidth;
+  Nature.height = window.innerHeight;
+  Nature.Fps = 60;
 
-      var random = function (min, max) {
-        return Math.random() * (max - min) + min
+  var Tool = {};
+  Tool.random = function (min, max) {
+    return Math.random() * (max - min) + min
+  }
+
+  window.requestAnimationFrame = (function () {
+    return window.requestAnimationFrame
+      || window.webkitRequestAnimationFrame
+      || window.mozRequestAnimationFrame
+      || window.oRequestAnimationFrame
+      || window.msRequestAnimationFrame
+      || function (callBack) {
+        window.setTimeout(callBack, 1000 / Nature.Fps)
       }
+  })();
 
-      window.requestAnimationFrame = (function () {
-        var FPS = 60
+  var Particle = function () {
+    this.x = Math.random() * Nature.width;
+    this.y = Math.random() * Nature.height;
+    this.r = Tool.random(1, 5)
+    this.alpha = Tool.random(0.3, 1)
+    this.velocity = {
+      x: Tool.random(-0.35, 0.35),
+      y: Tool.random(0.75, 1.5)
+    }
+  }
 
-        return window.requestAnimationFrame  ||
-               window.webkitRequestAnimationFrame ||
-               window.mozRequestAnimationFrame ||
-               window.oRequestAnimationFrame ||
-               window.msRequestAnimationFrame ||
-               function (callBack) {
-                 window.setTimeout(callBack, 1000/FPS)
-               }
-      })()
+  Particle.prototype.update = function () {
+    var graph = Nature.camera.createRadialGradient(this.x, this.y, 0, this.x, this.y, 10);
+    graph.addColorStop(0, 'hsla(255, 255%, 255%, 1)');
+    graph.addColorStop(1, 'hsla(255, 255%, 255%, 0)');
+    Nature.camera.fillStyle = graph;
+    Nature.camera.beginPath();
+    Nature.camera.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
+    Nature.camera.closePath();
+    Nature.camera.fill();
+  }
+  Particle.prototype.render = function () {
+    this.x += this.velocity.x;
+    this.y += this.velocity.y;
+    if (this.y > Nature.scene.height) {
+      this.x = Math.random() * Nature.width;
+      this.y = 0;
+    }
+    this.update();
+  }
 
-      var Particle = function () {
-        this.x = Math.random() * canvasW
-        this.y = Math.random() * canvasH
-        this.r = random(1, 5)
-        this.alpha = random(0.3, 1)
-        this.velocity = {
-          x: random(-0.35, 0.35),
-          y: random(0.75, 1.5)
-        }
+  var snowy = function () {
+    Nature.camera.clearRect(0, 0, Nature.scene.width, Nature.scene.height);
+    for (var i = 0; i < Nature.particles.length; i++) {
+      var particle = Nature.particles[i];
+      particle.render();
+    }
+    requestAnimationFrame(snowy);
+  }
 
-        this.draw = function () {
-          ctx.fillStyle = 'rgba(255, 255, 255, '+this.alpha+')'
-          ctx.beginPath()
-          ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
-          ctx.closePath()
-          ctx.fill()
-        }
+  var weather = function () {
+    Nature.scene.width = Nature.width;
+    Nature.scene.height = Nature.height;
+    for (var i = 0; i < Nature.entity; i++) {
+      var particle = new Particle();
+      Nature.particles.push(particle);
+    }
+    snowy();
+  }
 
-        this.moving = function () {
-          this.x += this.velocity.x
-          this.y += this.velocity.y
-
-          if (this.y > canvasH) {
-            this.x = Math.random() * canvasW
-            this.y = 0
-          }
-
-          this.draw()
-        }
-      }
-
-      init()
-
-      function init() {
-        canvas.width = canvasW
-        canvas.height = canvasH
-
-        for (var i = 0; i < maxParticles; i++) {
-          particles.push(new Particle())
-        }
-
-        animate()
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvasW, canvasH)
-        particles.forEach(function (particle) {
-          particle.moving()
-        })
-
-        requestAnimationFrame(animate)
-      }
-    })(window)
+  weather();
+})();
