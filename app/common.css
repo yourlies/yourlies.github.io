@@ -10,6 +10,11 @@ body {
   color: #eee;
   margin: 0;
 }
+.top span {
+  color: #f33;
+  margin-right: 5px;
+  font-size: 16px;
+}
 #canv {
   top: 0;
   left: 0;
