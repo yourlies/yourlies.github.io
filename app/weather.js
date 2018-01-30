@@ -36,10 +36,7 @@
   }
 
   Particle.prototype.update = function () {
-    var graph = Nature.camera.createRadialGradient(this.x, this.y, 0, this.x, this.y, 10);
-    graph.addColorStop(0, 'hsla(255, 255%, 255%, 1)');
-    graph.addColorStop(1, 'hsla(255, 255%, 255%, 0)');
-    Nature.camera.fillStyle = graph;
+    Nature.camera.fillStyle = 'rgba(255, 255, 255, ' + this.alpha + ')';
     Nature.camera.beginPath();
     Nature.camera.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
     Nature.camera.closePath();
