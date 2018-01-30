@@ -1,1 +1,78 @@
-!function(){var t=20,i=document.getElementById("canv");i.width=window.innerWidth,i.height=window.innerHeight;var e=i.getContext("2d");e.fillStyle="rgba(255, 255, 255, 0)";var n={entity:[]};n.width=i.width,n.height=i.height;var a={simpleHarmonic:function(t,i){return Math.sin(1*t)*i}},h=function(){this.x=0,this.y=0,this.size=0,this.speed=0};h.prototype.drawSnow=function(){this.graph=e.createRadialGradient(this.x,this.y,0,this.x,this.y,this.size),this.graph.addColorStop(0,"hsla(255, 255%, 255%, 1)"),this.graph.addColorStop(1,"hsla(255, 255%, 255%, 0)"),e.moveTo(this.x,this.y),e.fillStyle=this.graph,e.beginPath(),e.arc(this.x,this.y,this.size,0,2*Math.PI,!0),e.fill()},h.prototype.drawRain=function(){e.beginPath(),e.lineWidth=1,e.strokeStyle="#ddd",e.moveTo(this.x,this.y),e.lineTo(this.x+70,this.y+140),e.stroke()};var r={createFlake:function(){var t=new h;t.y=Math.random()*(n.height+50),t.x=Math.random()*n.width,t.time=Math.random()*(2*Math.PI),t.size=100/(10+100*Math.random())*1.3,t.speed=.15*Math.pow(.8*t.size,2)*1,t.speed=t.speed<1?1:t.speed,n.entity.push(t)},createRain:function(){var t=new h;t.y=Math.random()*(n.height+50),t.x=Math.random()*n.width,t.time=Math.random()*(2*Math.PI),t.size=100/(10+100*Math.random())*1.3,t.speed=1,n.entity.push(t)},renderSnow:function(i){i.time+=.05,i.time=i.time>=2*Math.PI?0:i.time,i.x+=a.simpleHarmonic(i.time,.3*i.size),i.y+=i.speed,i.y>n.height+50&&(i.y=-10-Math.random()*t),i.x>n.width+t&&(i.x=-t),i.x<-t&&(i.x=n.width+t),i.drawSnow()},renderRain:function(i){i.time+=.05,i.x+=7*(i.speed+1*i.time),i.y+=14*(i.speed+1*i.time),i.y>n.height+50&&(i.time=0,i.y=-10-Math.random()*t,i.x=Math.random()*n.width),i.drawRain()}},o={snowy:function(){var t,i=0,a=function(){i>30&&(i=0,r.createFlake()),i++,t=requestAnimationFrame(a),n.entity.length>=30&&cancelAnimationFrame(t)};a();var h=function(){window.requestAnimationFrame(h),e.clearRect(0,0,n.width,n.height),e.fillRect(0,0,n.width,n.height),e.fill();for(var t=0;t<n.entity.length;t++){var i=n.entity[t];r.renderSnow(i)}};h()},rainy:function(){var t,i=0,a=function(){i>30&&(i=0,r.createRain()),i++,t=requestAnimationFrame(a),n.entity.length>=30&&cancelAnimationFrame(t)};a();var h=function(){window.requestAnimationFrame(h),e.clearRect(0,0,n.width,n.height),e.fillRect(0,0,n.width,n.height),e.fill();for(var t=0;t<n.entity.length;t++){var i=n.entity[t];r.renderRain(i)}};h()}};o.snowy();var d=!1;window.addEventListener("resize",function(){d||(d=!0,setTimeout(function(){i.width=window.innerWidth,n.width=i.width,e.fillStyle="rgba(255, 255, 255, 0)",d=!1},1e3))})}();
+    ;(function (window, undefined) {
+      var canvas = document.getElementById('canv')
+      var ctx = canvas.getContext('2d')
+      var canvasW = window.innerWidth
+      var canvasH = window.innerHeight
+      var particles = []
+      var maxParticles = 500
+
+      var random = function (min, max) {
+        return Math.random() * (max - min) + min
+      }
+
+      window.requestAnimationFrame = (function () {
+        var FPS = 60
+
+        return window.requestAnimationFrame  ||
+               window.webkitRequestAnimationFrame ||
+               window.mozRequestAnimationFrame ||
+               window.oRequestAnimationFrame ||
+               window.msRequestAnimationFrame ||
+               function (callBack) {
+                 window.setTimeout(callBack, 1000/FPS)
+               }
+      })()
+
+      var Particle = function () {
+        this.x = Math.random() * canvasW
+        this.y = Math.random() * canvasH
+        this.r = random(1, 5)
+        this.alpha = random(0.3, 1)
+        this.velocity = {
+          x: random(-0.35, 0.35),
+          y: random(0.75, 1.5)
+        }
+
+        this.draw = function () {
+          ctx.fillStyle = 'rgba(255, 255, 255, '+this.alpha+')'
+          ctx.beginPath()
+          ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false)
+          ctx.closePath()
+          ctx.fill()
+        }
+
+        this.moving = function () {
+          this.x += this.velocity.x
+          this.y += this.velocity.y
+
+          if (this.y > canvasH) {
+            this.x = Math.random() * canvasW
+            this.y = 0
+          }
+
+          this.draw()
+        }
+      }
+
+      init()
+
+      function init() {
+        canvas.width = canvasW
+        canvas.height = canvasH
+
+        for (var i = 0; i < maxParticles; i++) {
+          particles.push(new Particle())
+        }
+
+        animate()
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvasW, canvasH)
+        particles.forEach(function (particle) {
+          particle.moving()
+        })
+
+        requestAnimationFrame(animate)
+      }
+    })(window)
