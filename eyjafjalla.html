@@ -43,6 +43,10 @@
         </div>
         <div class="main-pic">
           <p class="comment">“我是艾雅法拉，加入罗德岛前一直在研究火山地质。因为矿石病的影响，我的听力不太好，也许，以后要多多麻烦您了，前辈~”</p>
+          <div class="body-pic switch-pic mobile">
+            <img class="i0" src="../app/akhr/eyjafjalla.png" />
+            <img class="i1" src="../app/akhr/eyjafjalla_2.png" />
+          </div>
           <ul class="data-pic">
             <li>
               <h4>定位</h4>
@@ -58,9 +62,9 @@
               <p class="comment">练了你不吃亏，练了你不上当，自从练（有）了小绵羊，阿妈再也不用担心我被市区大锤80了，再说了，试问黑丝kawaii后辈小羊谁不爱呢？</p>
             </li>
           </ul>
-          <div class="body-pic switch-pic">
+          <div class="body-pic switch-pic pc">
             <img class="i0" src="../app/akhr/eyjafjalla.png" />
-            <img class="i1" src="../app/akhr/eyjafjalla_2.png" />              
+            <img class="i1" src="../app/akhr/eyjafjalla_2.png" />
           </div>
         </div>
         <div>
@@ -81,9 +85,8 @@
         <div>
           <h3>二重咏唱 Skill <a class="switch-skill" href="javascript:;">七级技能</a></h3>
           <i class="iconfont eyjafjalla-s-1"></i>
-          <div class="dib">
-            <p class="comment i0">攻击速度+45，第二次及以后使用时追加攻击力+45%的效果</p>
-            <p class="comment i1 dn">攻击速度+60，第二次及以后使用时追加攻击力+60%的效果</p>
+          <!-- mobile -->
+          <div class="dib mobile skill-set">
             <a class="i1 dn">25</a><a class="i0">20</a><svg
               class="charge"
               width="10" height="20"
@@ -94,6 +97,25 @@
             </svg><a class="i0">39</a><a class="i1 dn">35</a>
             <span class="btn">自动回复</span><span class="btn">手动触发</span>
           </div>
+          <div class="dib mobile mt5">
+            <p class="comment i0">攻击速度+45，第二次及以后使用时追加攻击力+45%的效果</p>
+            <p class="comment i1 dn">攻击速度+60，第二次及以后使用时追加攻击力+60%的效果</p>
+          </div>
+          <!-- pc -->
+          <div class="dib pc skill-set">
+            <a class="i1 dn">25</a><a class="i0">20</a><svg
+              class="charge"
+              width="10" height="20"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 20">
+              <polygon
+                points="7,0 0,13 5,12 3,20 10,7 5,9"
+                style="fill:black;"/>
+            </svg><a class="i0">39</a><a class="i1 dn">35</a>
+            <span class="btn">自动回复</span><span class="btn">手动触发</span>
+            <p class="comment i0">攻击速度+45，第二次及以后使用时追加攻击力+45%的效果</p>
+            <p class="comment i1 dn">攻击速度+60，第二次及以后使用时追加攻击力+60%的效果</p>
+          </div>
+          <!-- end -->
           <p class="comment mt20">“攻速的计算公式为S=S0(1+x%)，单位是次/s，可以近似的认为是百分比加攻”</p>
           <p class="comment">S0为常数，攻速加攻乘算，差不多两倍左右，一技能基本上没啥特别好说的（基本上没几个人带），携带一技能的小羊就是单法，有点大材小用的感觉</p>
           <h4>适用</h4>
@@ -112,9 +134,7 @@
         <div>
           <h3>点燃 Skill <a class="switch-skill" href="javascript:;">七级技能</a></h3>
           <i class="iconfont eyjafjalla-s-2"></i>
-          <div class="dib">
-            <p class="comment i0">下次攻击造成攻击力310%的法伤，周围敌人受一半的伤害且6秒内法抗-20%</p>
-            <p class="comment i1 dn">下次攻击造成攻击力370%的法伤，周围敌人受一半的伤害且6秒内法抗-25%</p>
+          <div class="dib mobile skill-set">
             <a class="i1 dn">0</a><a class="i0">0</a><svg
               class="charge"
               width="10" height="20"
@@ -124,6 +144,23 @@
                 style="fill:black;"/>
             </svg><a class="i0">7</a><a class="i1 dn">5</a>
             <span class="btn">自动回复</span><span class="btn">自动触发</span>
+          </div>
+          <div class="dib mobile mt5">
+            <p class="comment i0">下次攻击造成攻击力310%的法伤，周围敌人受一半的伤害且6秒内法抗-20%</p>
+            <p class="comment i1 dn">下次攻击造成攻击力370%的法伤，周围敌人受一半的伤害且6秒内法抗-25%</p>
+          </div>
+          <div class="dib pc skill-set">
+            <a class="i1 dn">0</a><a class="i0">0</a><svg
+              class="charge"
+              width="10" height="20"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 20">
+              <polygon
+                points="7,0 0,13 5,12 3,20 10,7 5,9"
+                style="fill:black;"/>
+            </svg><a class="i0">7</a><a class="i1 dn">5</a>
+            <span class="btn">自动回复</span><span class="btn">自动触发</span>
+            <p class="comment i0">下次攻击造成攻击力310%的法伤，周围敌人受一半的伤害且6秒内法抗-20%</p>
+            <p class="comment i1 dn">下次攻击造成攻击力370%的法伤，周围敌人受一半的伤害且6秒内法抗-25%</p>
           </div>
           <p class="comment mt20">“小绵羊封神的核心技能之一，立体索降，垂直进攻，把你的闪现给我交了！”</p>
           <h4>适用</h4>
