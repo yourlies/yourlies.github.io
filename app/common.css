@@ -7,7 +7,7 @@ body {
   font-size: 16px;
   word-spacing: 1px;
   background-color: #fff;
-  color: #eee;
+  color: #333;
   margin: 0;
 }
 .top span {
@@ -24,6 +24,15 @@ body {
 ::-webkit-scrollbar {
   position: absolute;
   display: none;
+}
+.dib {
+  display: inline-block;
+}
+.iconfont {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: 50px;
 }
 img {
   border: none;
@@ -52,7 +61,7 @@ h5,
 h6 {
   font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
   font-weight: 400;
-  color: #ddd;
+  color: #333;
 }
 .main {
   max-width: 600px;
@@ -79,8 +88,20 @@ h6 {
     text-align: center;
     display: inline-block;
   }
-  .title a {
+  .title a, .title h1 {
     font-size: 26px;
+  }
+  .title h1 {
+    color: #333;
+  }
+  .subtitle {
+    color: #666;
+  }
+  .subtitle p {
+    display: inline-block;
+  }
+  .subtitle .author {
+    margin: 0;
   }
   .links {
     display: inline-block;
@@ -130,4 +151,13 @@ h6 {
 .raindrop {
   position: fixed;
   border-bottom: 1px solid #ddd;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.img-container img {
+  width: 100%;
+  margin-bottom: 5px;
 }
