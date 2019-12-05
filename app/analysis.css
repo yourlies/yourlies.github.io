@@ -1,0 +1,192 @@
+#wrapper {
+  /*background-image: url('./akhr/bk.jpg');*/
+}
+.seperator {
+  height: 1px;
+  visibility: hidden;
+  margin: 30px 0;
+}
+.main {
+  margin: 30px auto;
+}
+.main ul {
+  list-style-type: none;
+  padding: 0;
+  padding-top: 4px;
+}
+.main ul li {
+  position: relative;
+  padding: 30px 0 15px;
+  margin-bottom: 10px;
+}
+p {
+  margin: 6px 0;
+}
+.post .title {
+  color: #000;
+  text-align: left;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+.post h2, .post h3, .post h4 {
+  margin: 0;
+}
+.title h2, .title h4 {
+  display: inline-block;
+}
+.post .title a {
+  color: #f55852;
+  font-size: 16px;
+}
+.post img {
+  user-select: none;
+}
+.post h2 {
+  font-size: 20px;
+  color: #666;
+}
+.post h3 {
+  font-size: 18px;
+  color: #666;
+  margin: 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.post .switch-pic img {
+  position: absolute;
+}
+
+.dn {
+  display: none;
+}
+
+.post .switch-pic img.i0 {
+  z-index: 1;
+}
+.post .switch-pic img.i1 {
+  opacity: .1;
+  z-index: 0;
+}
+.post p.comment {
+  color: #000;
+  position: relative;
+  z-index: 2;
+}
+
+ul.data-pic, .body-pic {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.body-pic img {
+  margin-top: -20px;
+}
+.body-pic, .body-pic img {
+  height: 400px;
+}
+
+ul.data-pic {
+  max-width: 245px;
+  margin-top: 15px;
+}
+ul.data-pic li {
+  padding: 0;
+}
+ul.data-pic span:first-child {
+  width: 45px;
+}
+ul.data-pic li:nth-child(3) span:nth-child(3) {
+  width: 103px;
+}
+ul.data-pic span {
+  display: inline-block;
+  width: 70px;
+}
+ul.data-pic span.i1 {
+  display: none;
+}
+.post .underline {
+  margin-top: 15px;
+  padding-bottom: 4px;
+}
+.underline.dashed {
+  border-bottom: 1px dashed #aaa;
+}
+.position.absolute {
+  position: absolute;
+}
+.z-1 {
+  z-index: -1;
+}
+
+
+.post span.btn {
+  padding: 1px 3px;
+  padding-bottom: 0px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #888;
+  margin: 0 5px;
+}
+
+.iconfont {
+  width: 53px;
+  height: 53px;
+  background-size: 53px;
+  box-shadow: 2px 2px 5px #888;
+  position: relative;
+  top: 6px;
+}
+.iconfont.eyjafjalla-s-1 {
+  background-image: url('./akhr/eyjafjalla_s_1.png');
+}
+.iconfont.eyjafjalla-s-2 {
+  background-image: url('./akhr/eyjafjalla_s_2.png');
+}
+
+.charge {
+  position: relative;
+  top: 3px;
+}
+
+.post h3 a {
+  color: #f55852;
+  position: relative;
+  top: -1px;
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+@media screen and (max-width: 768px) {
+  .post .switch-pic img {
+    width: 300px;
+    height: auto;
+    margin-top: 0;
+  }
+  .body-pic {
+    height: 300px;
+  }
+  ul.data-pic, .body-pic {
+    display: block;
+    max-width: none;
+  }
+  .pc {
+    display: none;
+  }
+  .skill-set {
+    margin-left: 5px;
+    position: relative;
+    top: -28px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+  .skill-set {
+    margin-left: 5px;
+  }
+}

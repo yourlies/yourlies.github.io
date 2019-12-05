@@ -50,6 +50,37 @@
       </div>
     </div>
     <canvas id='canv'></canvas>
-    <script src="http://127.0.0.1:8080/index.js"></script>
+    <script>
+      var $process = {};
+    </script>
+    <script src="https://yourlies.github.io/weather/drop.js"></script>
+    <script src="https://yourlies.github.io/weather/weather.js"></script>
+    <script>
+      ;(function () {
+        var watchers = [];
+        var canv = document.getElementById('canv');
+        var ctx = canv.getContext('2d');
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var drop = new $process.Drop({ canv: canv, ctx: ctx });
+        var recycle = function (e) {
+          drop.watcher({ x: e.x, y: e.y, forward: 1 });
+        }
+        var rainy = new $process.Rainy({ recycle: recycle, ctx: ctx });
+        watchers.push(drop);
+        watchers.push(rainy);
+        var raf = function () {
+          ctx.clearRect(0, 0, width, height);
+          watchers.forEach(function (e) {
+            e.updater();
+          });
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+        window.onmousedown = function (e) {
+          drop.watcher({ x: e.clientX, y: e.clientY });
+        }
+      })();
+    </script>
   </body>
 </html>
