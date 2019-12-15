@@ -1,15 +1,17 @@
 body {
-  font-family: "Roboto", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, serif;
+  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
+    Arial, serif;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  font-size: 16px;
   word-spacing: 1px;
+  line-height: 30px;
   background-color: #fff;
-  color: #333;
+  color: #666;
   margin: 0;
 }
+
 .top span {
   color: #f33;
   margin-right: 5px;
@@ -59,25 +61,29 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
+    Arial, sans-serif;
   font-weight: 400;
   color: #333;
 }
 .main {
-  max-width: 600px;
   margin: 50px auto;
   padding: 0 30px 50px;
   position: relative;
 }
 .links {
   text-align: center;
-  font-family: "Roboto", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, serif;
+  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
+    Arial, serif;
   color: #999;
 }
 .placeholder {
   display: inline-block;
 }
 @media screen and (min-width: 768px) {
+  .main {
+    max-width: 1000px;
+  }
   .header {
     margin-bottom: 5px;
   }
@@ -88,7 +94,8 @@ h6 {
     text-align: center;
     display: inline-block;
   }
-  .title a, .title h1 {
+  .title a,
+  .title h1 {
     font-size: 26px;
   }
   .title h1 {
@@ -120,6 +127,12 @@ h6 {
   .pc-hidden {
     display: none !important;
   }
+  body {
+    font-size: 18px;
+  }
+  .block {
+    margin-bottom: 40px;
+  }
 }
 @media screen and (max-width: 768px) {
   .links {
@@ -137,6 +150,19 @@ h6 {
   }
   .mobile-hidden {
     display: none;
+  }
+  body {
+    font-size: 16px;
+  }
+  .links .author {
+    font-size: 17px;
+    position: relative;
+    top: -2px;
+    color: #999;
+    margin-right: 10px;
+  }
+  .block {
+    margin-bottom: 30px;
   }
 }
 @media screen and (max-width: 420px) {
