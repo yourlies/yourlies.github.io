@@ -183,6 +183,14 @@ ul.data-pic span.i1 {
   pre {
     font-size: 14px;
   }
+  .post h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+  }
+  .post h4 {
+    font-size: 14px;
+  }
 }
 @media screen and (min-width: 768px) {
   .mobile {
@@ -193,6 +201,11 @@ ul.data-pic span.i1 {
   }
   pre {
     font-size: 16px;
+  }
+  .post h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
   }
 }
 pre {
@@ -209,11 +222,6 @@ pre {
   margin: 0;
   margin-bottom: 10px;
   text-align: justify;
-}
-.post h2 {
-  font-size: 22px;
-  font-weight: 400;
-  color: #333;
 }
 .post h4 {
   margin-left: 5px;
