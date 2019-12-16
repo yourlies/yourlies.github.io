@@ -184,12 +184,10 @@ ul.data-pic span.i1 {
     font-size: 14px;
   }
   .post h2 {
-    font-size: 16px;
-    font-weight: 400;
-    color: #333;
+    font-size: 18px;
   }
   .post h4 {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 @media screen and (min-width: 768px) {
@@ -202,10 +200,8 @@ ul.data-pic span.i1 {
   pre {
     font-size: 16px;
   }
-  .post h2 {
-    font-size: 20px;
-    font-weight: 400;
-    color: #333;
+  h2 {
+    font-size: 22px;
   }
 }
 pre {
@@ -215,13 +211,23 @@ pre {
   box-shadow: inset 0 0 8px #ccc;
   border-radius: 5px;
   line-height: 23px;
-  font-family: Consolas, Menlo, Monaco, lucida console, Liberation Mono,
-    Courier New, andale mono, monospaceX, sans-serif;
+  font-family: Consolas, Menlo, Monaco, lucida console, Liberation Mono, Courier New, andale mono, monospaceX, sans-serif;
 }
 .block p {
   margin: 0;
   margin-bottom: 10px;
   text-align: justify;
+}
+.block a {
+  color: #930ee4;
+  border-bottom: 1px dashed orange;
+}
+.block a:hover {
+  background-color: #ccc;
+}
+.post h2 {
+  font-weight: 400;
+  color: #333;
 }
 .post h4 {
   margin-left: 5px;
