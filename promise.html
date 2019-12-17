@@ -95,10 +95,12 @@
   })</pre
           >
           <pre>
-  // fetch原生异步请求函数, 返回promise
+  // fetch原生异步请求函数
+  // 返回一个promise对象
   fetch(url, data)
   .then((res) => {
-    // res是请求的request body，res.json()是原生方法
+    // res是请求的request body
+    // res.json()是原生方法
     return res.json()
   })
   .catch((err) => {
@@ -114,33 +116,43 @@
         <div class="block">
           <p>事实上如果你彻底明白了promise的原理，就会发现模拟一个promise非常的简单，这里给上一个我自己的模拟办法，抛砖引玉</p>
           <pre>
-// 囿于篇幅这里仅模拟Promise.prototype.then的实现
-const Promise = function (executor) {
-  this.queue = []
-  this.context = null
-  this.status = 'pending'
-  setTimeout(() => {
-    executor(this.resolve.bind(this))
-  })
-}
-Promise.prototype.resolve = function(context) {
-  this.context = context
-  this.status = 'fulfilled'
-  for (let i = 0; i < this.queue.length; i++) {
-    const queue = this.queue[i]
-    this.context = queue(this.context)
+  // 囿于篇幅这里仅模拟
+  // Promise.prototype.then的实现
+  const Promise =
+    function (executor) {
+    this.queue = []
+    this.context = null
+    this.status = 'pending'
+    setTimeout(() => {
+      executor(
+        this.resolve.bind(this)
+      )
+    })
   }
-}
-Promise.prototype.then = function (callback) {
-  if (this.status == 'pending') {
-    this.queue.push(callback)
+  Promise.prototype.resolve =
+    function(context) {
+    this.context = context
+    this.status = 'fulfilled'
+    for (let i = 0;
+      i < this.queue.length;
+      i++) {
+      const queue = this.queue[i]
+      this.context =
+        queue(this.context)
+    }
   }
-  if (this.status == 'resolved') {
-    callback(this.context)
-  }
-  return this
-}</pre
+  Promise.prototype.then =
+    function (callback) {
+    if (this.status == 'pending') {
+      this.queue.push(callback)
+    }
+    if (this.status == 'resolved') {
+      callback(this.context)
+    }
+    return this
+  }</pre
           >
+          <p>实际上，这个页面里就写了一个现成能运行的一个模拟promise</p>
         </div>
         <script>
           const LiesPromise = function(executor) {
