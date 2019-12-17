@@ -175,9 +175,10 @@ EventLoop.prototype.readAwait = function() {
                 resolve()
               }, 2000)
             })
-            await processor.$request('speak').then(() => {
+            processor.$request('speak').then(() => {
               console.log('I am the Jugement!')
             })
+            console.log('How dare you are?')
           })()
         </script>
       </div>
