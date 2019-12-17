@@ -1,15 +1,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
-    />
-    <link
-      href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./app/common.css" type="text/css" />
     <link rel="stylesheet" href="./app/new_post.css" type="text/css" />
   </head>
@@ -19,32 +12,24 @@
       <div class="header mobile-hidden">
         <div class="placeholder"></div>
         <div class="title">
-          <h1>javascript—异步事件</h1>
+          <h1>javascript事件之Event Loop</h1>
         </div>
         <div class="subtitle">
           <p class="author">lies</p>
           <p class="links placeholder">
-            <a href="javascript:;" target="_blank"
-              ><img src="./app/twitter.png"
-            /></a>
-            <a href="javascript:;" target="_blank"
-              ><img src="./app/github.png"
-            /></a>
-            <a href="javascript:;" target="_blank"
-              ><img src="./app/feed.png"
-            /></a>
+            <a href="javascript:;" target="_blank"><img src="./app/twitter.png"/></a>
+            <a href="javascript:;" target="_blank"><img src="./app/github.png"/></a>
+            <a href="javascript:;" target="_blank"><img src="./app/feed.png"/></a>
           </p>
         </div>
       </div>
       <!-- mobile header -->
       <div class="header pc-hidden">
-        <a href="javascript:;">javascript—异步事件</a>
+        <a href="javascript:;">事件循环—Event Loop</a>
       </div>
       <p class="links pc-hidden">
         <a href="javascript:;" class="author">lies</a>
-        <a href="javascript:;" target="_blank"
-          ><img src="./app/twitter.png"
-        /></a>
+        <a href="javascript:;" target="_blank"><img src="./app/twitter.png"/></a>
         <a href="javascript:;" target="_blank"><img src="./app/github.png"/></a>
         <a href="javascript:;" target="_blank"><img src="./app/feed.png"/></a>
       </p>
@@ -63,9 +48,7 @@
         </div>
         <div class="block">
           <p>
-            这一点很容易得到验证，在windows/mac中的powershell/shell可以很清楚的看到，新开一个chrome
-            tab页面，上面会多出一个进程，简单点理解，每打开一个 Tab
-            页，就相当于创建了一个独立的浏览器进程。
+            这一点很容易得到验证，在windows/mac中的powershell/shell可以很清楚的看到，新开一个chrome tab页面，上面会多出一个进程，简单点理解，每打开一个 Tab 页，就相当于创建了一个独立的浏览器进程。
           </p>
         </div>
         <div class="title">
@@ -89,15 +72,10 @@
             我们迟早会明白一个道理，处理不同事件或任务的时候，设计出一个高效的计划和方案，是如此的能提高工作效率和减少摸鱼情况的发生
           </p>
           <p>
-            js中对这些事件进行了简单的归类，其中有同步事件，还有异步事件，
-            举个简单的例子，我早上起来先烧个水，然后换衣服刷牙洗脸，等水烧开了喝水,
-            烧水就是异步事件，因为水没那么快烧完，我不可能等水烧完才做其他事情，否则一天都要这样被摸鱼摸没了
+            js中对这些事件进行了简单的归类，其中有同步事件，还有异步事件， 举个简单的例子，我早上起来先烧个水，然后换衣服刷牙洗脸，等水烧开了喝水, 烧水就是异步事件，因为水没那么快烧完，我不可能等水烧完才做其他事情，否则一天都要这样被摸鱼摸没了
           </p>
           <p>
-            js在主线程中一行一行代码往下执行，遇到同步事件，则进入主线程直接执行，在这个过程中如果遇到一个异步事件，则将其推入事件表Event
-            table并注册函数，当这个异步事件完成可以执行时，将其移入任务队列Event
-            queue，当主线程执行栈call
-            stack中的事件为空时，就会去读取事件队列，去执行对应的回调
+            js在主线程中一行一行代码往下执行，遇到同步事件，则进入主线程直接执行，在这个过程中如果遇到一个异步事件，则将其推入事件表Event table并注册函数，当这个异步事件完成可以执行时，将其移入任务队列Event queue，当主线程执行栈call stack中的事件为空时，就会去读取事件队列，去执行对应的回调
           </p>
         </div>
         <div class="title">
@@ -109,12 +87,10 @@
           </p>
           <ul>
             <li>
-              1.
-              macrotask，又称为宏任务，可以理解为，每次执行栈执行的代码就是一个宏任务，包括每次从事件队列中获取一个事件回调并放到执行栈中执行，这里事件队列中每一个事件都是一个macrotask
+              1. macrotask，又称为宏任务，可以理解为，每次执行栈执行的代码就是一个宏任务，包括每次从事件队列中获取一个事件回调并放到执行栈中执行，这里事件队列中每一个事件都是一个macrotask
             </li>
             <li>
-              2.
-              microtask，又称为微任务，可以理解是在当前task执行结束后立即执行的任务
+              2. microtask，又称为微任务，可以理解是在当前task执行结束后立即执行的任务
             </li>
           </ul>
         </div>
@@ -137,13 +113,11 @@
             <li>1. 执行一个宏任务（执行栈中没有就从事件队列中获取）</li>
             <li>2. 执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
             <li>
-              3.
-              宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）
+              3. 宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）
             </li>
             <li>4. 当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染</li>
             <li>
-              5.
-              渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）
+              5. 渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）
             </li>
           </ul>
         </div>
@@ -190,16 +164,13 @@ console.log(2)</pre
               2. 执行过程中，遇到seTimeout则推入任务队列，过程中输出0，1，2
             </li>
             <li>
-              3.
-              第一个macrotask执行完毕，接着继续从任务队列中获取一个macrotask执行，并输出s0
+              3. 第一个macrotask执行完毕，接着继续从任务队列中获取一个macrotask执行，并输出s0
             </li>
             <li>
-              4.
-              第二个macrotask执行完毕，接着继续从任务队列中获取一个macrotask执行，执行过程中产生microtask
+              4. 第二个macrotask执行完毕，接着继续从任务队列中获取一个macrotask执行，执行过程中产生microtask
             </li>
             <li>
-              5.
-              第三个macrotask执行完毕，在第四个macrotask之前读取所有的microtask并执行，输出promise1，promise2，然后执行第四个macrotask，输出s1
+              5. 第三个macrotask执行完毕，在第四个macrotask之前读取所有的microtask并执行，输出promise1，promise2，然后执行第四个macrotask，输出s1
             </li>
           </ul>
         </div>
