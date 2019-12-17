@@ -182,6 +182,7 @@ ul.data-pic span.i1 {
   }
   pre {
     font-size: 14px;
+    padding: 15px;
   }
   .post h2 {
     font-size: 18px;
@@ -199,6 +200,7 @@ ul.data-pic span.i1 {
   }
   pre {
     font-size: 16px;
+    padding: 10px 30px;
   }
   h2 {
     font-size: 22px;
@@ -206,7 +208,6 @@ ul.data-pic span.i1 {
 }
 pre {
   background-color: #ddd;
-  padding: 10px 30px;
   margin: 20px 0;
   box-shadow: inset 0 0 8px #ccc;
   border-radius: 5px;
