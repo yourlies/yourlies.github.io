@@ -1,0 +1,210 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/static/common.css" type="text/css" />
+<link rel="stylesheet" href="/static/analysis.css" type="text/css" /></head><body><div id="wrapper"><!-- pc header -->
+<div class="header mobile-hidden">
+  <div class="placeholder"></div>
+  <div class="title">
+    <h1>v8垃圾回收机制</h1>
+  </div>
+  <div class="subtitle">
+    <p class="author">lies</p>
+    <p class="links placeholder">
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+    </p>
+  </div>
+</div>
+<!-- mobile header -->
+<div class="header pc-hidden">
+  <a href="javascript:;">v8垃圾回收机制</a>
+</div>
+<p class="links pc-hidden">
+  <a href="javascript:;" class="author">lies</a>
+  <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+</p>
+<div class="main post">
+  <div class="title">
+    <h2>献给异步编程的终极解答</h2>
+    <h4>// async await</h4>
+  </div>
+  <div class="block">
+    <p>首先先打个小广告，推荐一下之前写过的文章</p>
+    <ul>
+      <li>
+        1. 了解js单线程背后隐藏着的不为人知的秘密
+        <a href="//yourlies.github.io/async.html">事件循环Event Loop</a>
+      </li>
+      <li>
+        2. 震惊，光天化日之下男子竟对Promise作出这样的事情（
+        <a href="//yourlies.github.io/promise.html">指模拟promise</a>）
+      </li>
+    </ul>
+    <p>
+      实际上，如果你对前面这些概念了解的够深刻的话，async await其实相当的好理解，非常简单，简而言之就是，promise的出现让异步编程有着接近同步编程的体验，通过链式操作让你体验如丝般的顺滑回调写法，而async await的出现，则真正意义上改变了异步编程，实际上也就是将链式操作进一步剥离出来，具体的概念就不赘述了，详情可查看mdn的这篇
+      <a href="//developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function">async await的文档</a>
+      ，而主要讲一下个人对于async await怎么用，有什么用，的一些见解
+    </p>
+  </div>
+  <div class="title">
+    <h2>async await能做什么</h2>
+    <h4>// 不要停下来啊</h4>
+  </div>
+  <div class="block">
+    <p>用法非常简单，适用于返回promise对象的异步函数例如，这里抛砖引玉，尝试用async await和promise实现一个事件订阅发布功能</p>
+    <ul>
+      <li>其调用方式为，<code>context.$request(eventName)</code>，返回一个promise对象</li>
+      <li>其注册方式为，<code>context.$register(eventName, function (resolve, rejected) {})</code></li>
+    </ul>
+    <p>首先是构造函数</p>
+    <pre>
+const EventLoop = function () {
+  this.table = []
+  this.queue = []
+  this.await = []
+}</pre
+    >
+    <p>原型链部分，主要是事件处理和注册订阅部分</p>
+    <pre>
+EventLoop.prototype.process = async function() {
+  const { name, payload } = this.queue.shift()
+  const func = this.table[name]
+  if (this.queue.length > 0) {
+    this.process()
+  } else {
+    this.readAwait()
+  }
+  if (typeof func == 'function') {
+    return await func(payload)
+  } else {
+    this.await.push({ name, payload })
+  }
+}
+EventLoop.prototype.$register = function(name, executor) {
+  this.table[name] = payload => {
+    return new Promise((resolve, rejected) => {
+      executor({ payload, resolve, rejected })
+    })
+  }
+  this.readAwait()
+}
+EventLoop.prototype.$request = async function(name, payload) {
+  this.queue.push({ name, payload })
+  return new Promise(async resolve => {
+    await this.process()
+    resolve()
+  })
+}</pre
+    >
+    <p>倘若注册事件还未发生，则需等待，await处理部分</p>
+    <pre>
+EventLoop.prototype.readAwait = function() {
+  for (let i = 0; i < this.await.length; i++) {
+    const { name } = this.await[i]
+    if (this.table[name]) {
+      const queue = this.await.splice(i, 1)
+      this.queue.push(...queue)
+      this.process()
+      break
+    }
+  }
+}</pre
+    >
+  </div>
+  <script>
+    const EventLoop = function() {
+      this.table = []
+      this.queue = []
+      this.await = []
+    }
+    EventLoop.prototype.process = async function() {
+      const { name, payload } = this.queue.shift()
+      const func = this.table[name]
+      if (this.queue.length > 0) {
+        this.process()
+      } else {
+        this.readAwait()
+      }
+      if (typeof func == 'function') {
+        return await func(payload)
+      } else {
+        this.await.push({ name, payload })
+      }
+    }
+    EventLoop.prototype.$register = function(name, executor) {
+      this.table[name] = payload => {
+        return new Promise((resolve, rejected) => {
+          executor({ payload, resolve, rejected })
+        })
+      }
+      this.readAwait()
+    }
+    EventLoop.prototype.$request = async function(name, payload) {
+      this.queue.push({ name, payload })
+      return new Promise(async resolve => {
+        await this.process()
+        resolve()
+      })
+    }
+    EventLoop.prototype.readAwait = function() {
+      for (let i = 0; i < this.await.length; i++) {
+        const { name } = this.await[i]
+        if (this.table[name]) {
+          const queue = this.await.splice(i, 1)
+          this.queue.push(...queue)
+          this.process()
+          break
+        }
+      }
+    }
+    ;(async function() {
+      const processor = new EventLoop()
+      processor.$register('speak', function({ resolve }) {
+        setTimeout(() => {
+          console.log('No body can juge me')
+          resolve()
+        }, 2000)
+      })
+      await processor.$request('speak').then(() => {
+        console.log('I am the Jugement!')
+      })
+    })()
+  </script>
+</div>
+<canvas id="canv"></canvas>
+<script>
+  var $process = {}
+</script>
+<script src="https://yourlies.github.io/weather/drop.js"></script>
+<script src="https://yourlies.github.io/weather/weather.js"></script>
+<script>
+  ;(function() {
+    var watchers = []
+    var canv = document.getElementById('canv')
+    var ctx = canv.getContext('2d')
+    var width = window.innerWidth
+    var height = window.innerHeight
+    var drop = new $process.Drop({ canv: canv, ctx: ctx })
+    var recycle = function(e) {
+      drop.watcher({ x: e.x, y: e.y, forward: 1 })
+    }
+    var rainy = new $process.Rainy({ recycle: recycle, ctx: ctx })
+    watchers.push(drop)
+    watchers.push(rainy)
+    var raf = function() {
+      ctx.clearRect(0, 0, width, height)
+      watchers.forEach(function(e) {
+        e.updater()
+      })
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    window.onmousedown = function(e) {
+      drop.watcher({ x: e.clientX, y: e.clientY })
+    }
+  })()
+</script>
+</div></body></html>

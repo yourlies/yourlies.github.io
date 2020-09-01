@@ -1,0 +1,83 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/static/common.css" type="text/css" />
+<link rel="stylesheet" href="/static/analysis.css" type="text/css" /></head><body><div id="wrapper"><!-- pc header -->
+<div class="header mobile-hidden">
+  <div class="placeholder"></div>
+  <div class="title">
+    <h1>v8垃圾回收机制</h1>
+  </div>
+  <div class="subtitle">
+    <p class="author">lies</p>
+    <p class="links placeholder">
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+    </p>
+  </div>
+</div>
+<!-- mobile header -->
+<div class="header pc-hidden">
+  <a href="javascript:;">v8垃圾回收机制</a>
+</div>
+<p class="links pc-hidden">
+  <a href="javascript:;" class="author">lies</a>
+  <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+</p>
+<div class="main post">
+  <div class="title">
+    <h2>两数之和</h2>
+    <h4>// async await</h4>
+  </div>
+  <div class="block">
+    <pre>
+      var twoSum = function (nums, target) {
+        var table = {}
+        for (var i = 0; i < nums.length; i++) {
+          var dis = target - nums[i]
+          if (table.hasOwnProperty(dis)) {
+            return [table[dis], i]
+          } else {
+            table[nums[i]] = i
+          }
+        }
+      }
+    </pre>
+  </div>
+</div>
+<canvas id="canv"></canvas>
+<script>
+  var $process = {}
+</script>
+<script src="https://yourlies.github.io/weather/drop.js"></script>
+<script src="https://yourlies.github.io/weather/weather.js"></script>
+<script>
+  ;(function() {
+    var watchers = []
+    var canv = document.getElementById('canv')
+    var ctx = canv.getContext('2d')
+    var width = window.innerWidth
+    var height = window.innerHeight
+    var drop = new $process.Drop({ canv: canv, ctx: ctx })
+    var recycle = function(e) {
+      drop.watcher({ x: e.x, y: e.y, forward: 1 })
+    }
+    var rainy = new $process.Rainy({ recycle: recycle, ctx: ctx })
+    watchers.push(drop)
+    watchers.push(rainy)
+    var raf = function() {
+      ctx.clearRect(0, 0, width, height)
+      watchers.forEach(function(e) {
+        e.updater()
+      })
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    window.onmousedown = function(e) {
+      drop.watcher({ x: e.clientX, y: e.clientY })
+    }
+  })()
+</script>
+</div></body></html>

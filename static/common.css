@@ -1,6 +1,5 @@
 body {
-  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
-    Arial, serif;
+  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, serif;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -61,20 +60,19 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
-    Arial, sans-serif;
+  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, sans-serif;
   font-weight: 400;
   color: #333;
 }
 .main {
   margin: 50px auto;
-  padding: 0 30px 50px;
+  margin-bottom: 0;
+  padding: 0 30px 20px;
   position: relative;
 }
 .links {
   text-align: center;
-  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro',
-    Arial, serif;
+  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, serif;
   color: #999;
 }
 .placeholder {
@@ -189,4 +187,31 @@ h6 {
 .img-container img {
   width: 100%;
   margin-bottom: 5px;
+}
+.pagination {
+  max-width: 1000px;
+  padding: 0 30px;
+  margin: auto;
+  position: relative;
+}
+.blog-nav {
+  position: absolute;
+  height: 20px;
+  line-height: 20px;
+  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, sans-serif;
+  font-size: 19px;
+  color: #666;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-bottom: 3px solid transparent;
+  padding-bottom: 2px;
+  top: 40px;
+}
+.blog-nav#older {
+  right: 30px;
+}
+.blog-nav:hover {
+  color: #f33;
+  border-bottom-color: #f33;
 }

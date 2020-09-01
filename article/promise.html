@@ -1,0 +1,234 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/static/common.css" type="text/css" />
+<link rel="stylesheet" href="/static/analysis.css" type="text/css" /></head><body><div id="wrapper"><!-- pc header -->
+<div class="header mobile-hidden">
+  <div class="placeholder"></div>
+  <div class="title">
+    <h1>v8垃圾回收机制</h1>
+  </div>
+  <div class="subtitle">
+    <p class="author">lies</p>
+    <p class="links placeholder">
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+    </p>
+  </div>
+</div>
+<!-- mobile header -->
+<div class="header pc-hidden">
+  <a href="javascript:;">v8垃圾回收机制</a>
+</div>
+<p class="links pc-hidden">
+  <a href="javascript:;" class="author">lies</a>
+  <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
+  <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
+</p>
+<div class="main post">
+  <div class="title">
+    <h2>Promise?</h2>
+    <h4>// show the result</h4>
+  </div>
+  <div class="block">
+    <p>首先需要你知道js是单线程的，以及js运行代码事件的大概机制</p>
+    <p>
+      详见我之前的文章<a href="//yourlies.github.io/async.html">JavaScript异步事件</a>，js的单线程以及运行机制，注定导致了，对于异步事件的处理，需要用到回调，一般异步事件的，形如<code>asyncFunc(context, callback)</code
+      >的异步函数，一般需要将回调函数以callback的形式作为参数传入函数内，而一旦涉及到了层层嵌套，那这个代码结构和代码风格会被回调地狱给破坏的支离破碎，臭不可闻，所以从古至今，讨论如何解决回调问题的方案一直层出不穷，直到es6出来以后原生实现了Promise提供了一种解决方案，你需要解决回调地狱，而我刚好专业
+    </p>
+    <p>
+      promise，顾名思义，是承诺的意思，即将来，等待踏着七彩祥云的他回来之后会做的操作，代表异步操作，其特点为
+    </p>
+    <ul>
+      <li>
+        1. 只有异步操作可以决定当前处于的状态，并且任何其他操作无法改变这个状态
+      </li>
+      <li>
+        2. Promise有以下几种状态: pending: 初始状态，既不是成功，也不是失败状态。 fulfilled: 意味着操作成功完成。 rejected: 意味着操作失败，一旦状态改变，就不会在变。
+      </li>
+      <li>3. 状态改变的过程只可能是：从pending变为fulfilled和从pending变为rejected。如果状态发生上述变化后，此时状态就不会在改变了，这时就称为resolved（已定型）</li>
+      <li>
+        4. 如果改变已经发生了，你再对Promise对象添加回调函数，也会立即得到这个结果。这与事件（Event）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。
+      </li>
+      <li>
+        5. promise是microtask类型，当前macrotask执行完毕之后，会读取当前所有的microtask一并顺序执行，并且这一举动在下一次渲染之前，上一次宏任务结束之后
+      </li>
+    </ul>
+  </div>
+  <div class="title">
+    <h2>promise的用法</h2>
+    <h4>// 链式操作</h4>
+  </div>
+  <div class="block">
+    <p>语法：<code>new Promise(function(resolve, reject) {...})</code></p>
+    <p>
+      当Promise状态为fulfilled时，调用then方法，当Promise状态为rejected时，调用catch方法，因为Promise.prototype.then和Promise.prototype.catch方法返回promise对象，可以被链式调用
+    </p>
+    <p>
+      参考下列用法
+    </p>
+    <pre>
+// 定义一个promise
+const promiseDemo = function () {
+  return new Promise(
+    function(resolve, reject) {
+      const number = 1
+      if (number == 1) {
+        resolve(number)
+      } else {
+        reject(number)
+      }
+    }
+  }
+)
+promiseDemo()
+// 当且仅当状态为resolve时触发
+.then((res) => {
+  console.log(res) // number, 1
+})
+// 当且仅当状态为reject时触发
+.catch((err) => {
+  console.log(err) // number, 1
+})</pre
+    >
+    <pre>
+// fetch原生异步请求函数
+// 返回一个promise对象
+fetch(url, data)
+.then((res) => {
+  // res是请求的request body
+  // res.json()是原生方法
+  return res.json()
+})
+.catch((err) => {
+  // 请求出错打印错误信息
+  console.log(err)
+})</pre
+    >
+  </div>
+  <div class="title">
+    <h2>如何模拟Promise</h2>
+    <h4>// promise?</h4>
+  </div>
+  <div class="block">
+    <p>事实上如果你彻底明白了promise的原理，就会发现模拟一个promise非常的简单，这里给上一个我自己的模拟办法，抛砖引玉</p>
+    <pre>
+// 囿于篇幅这里仅模拟
+// Promise.prototype.then的实现
+const Promise =
+  function (executor) {
+  this.queue = []
+  this.context = null
+  this.status = 'pending'
+  setTimeout(() => {
+    executor(
+      this.resolve.bind(this)
+    )
+  })
+}
+Promise.prototype.resolve =
+  function(context) {
+  this.context = context
+  this.status = 'fulfilled'
+  for (let i = 0;
+    i < this.queue.length;
+    i++) {
+    const queue = this.queue[i]
+    this.context =
+      queue(this.context)
+  }
+}
+Promise.prototype.then =
+  function (callback) {
+  if (this.status == 'pending') {
+    this.queue.push(callback)
+  }
+  if (this.status == 'resolved') {
+    callback(this.context)
+  }
+  return this
+}</pre
+    >
+    <p>实际上，这个页面里就写了一个现成能运行的一个模拟promise</p>
+  </div>
+  <script>
+    const LiesPromise = function(executor) {
+      this.queue = []
+      this.context = null
+      this.status = 'pending'
+      setTimeout(() => {
+        executor(this.resolve.bind(this))
+      })
+    }
+    LiesPromise.prototype.resolve = function(context) {
+      this.context = context
+      this.status = 'fulfilled'
+      for (let i = 0; i < this.queue.length; i++) {
+        const queue = this.queue[i]
+        this.context = queue(this.context)
+      }
+    }
+    LiesPromise.prototype.then = function(callback) {
+      if (this.status == 'pending') {
+        this.queue.push(callback)
+      }
+      if (this.status == 'resolved') {
+        callback(this.context)
+      }
+      return this
+    }
+
+    const promiseDemo = () => {
+      return new LiesPromise(resolve => {
+        setTimeout(() => {
+          console.log('resolved')
+          resolve()
+        }, 4000)
+      })
+    }
+
+    promiseDemo()
+      .then(res => {
+        console.log(1)
+      })
+      .then(() => {
+        console.log(2)
+      })
+    console.log(0)
+  </script>
+</div>
+<canvas id="canv"></canvas>
+<script>
+  var $process = {}
+</script>
+<script src="https://yourlies.github.io/weather/drop.js"></script>
+<script src="https://yourlies.github.io/weather/weather.js"></script>
+<script>
+  ;(function() {
+    var watchers = []
+    var canv = document.getElementById('canv')
+    var ctx = canv.getContext('2d')
+    var width = window.innerWidth
+    var height = window.innerHeight
+    var drop = new $process.Drop({ canv: canv, ctx: ctx })
+    var recycle = function(e) {
+      drop.watcher({ x: e.x, y: e.y, forward: 1 })
+    }
+    var rainy = new $process.Rainy({ recycle: recycle, ctx: ctx })
+    watchers.push(drop)
+    watchers.push(rainy)
+    var raf = function() {
+      ctx.clearRect(0, 0, width, height)
+      watchers.forEach(function(e) {
+        e.updater()
+      })
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    window.onmousedown = function(e) {
+      drop.watcher({ x: e.clientX, y: e.clientY })
+    }
+  })()
+</script>
+</div></body></html>

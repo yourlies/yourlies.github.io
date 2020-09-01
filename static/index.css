@@ -1,3 +1,12 @@
+.main {
+  min-height: 374px;
+}
+.main > .comment {
+  text-align: right;
+  margin-top: 60px;
+  font-size: 17px;
+  color: #666;
+}
 .main ul {
   list-style-type: none;
   padding: 0;
@@ -5,9 +14,8 @@
 }
 .main ul li {
   position: relative;
-  padding: 30px 0 15px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #999;
+  padding: 25px 0 20px;
+  border-bottom: 1px solid #ddd;
 }
 .main ul li:first-child {
   margin-top: -30px;
@@ -34,7 +42,7 @@
   color: #666;
   position: absolute;
   left: 0;
-  top: 33px;
+  top: 25px;
 }
 @media screen and (max-width: 420px) {
   .main h2 {
