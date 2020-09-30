@@ -1,56 +1,108 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="/static/common.css" type="text/css" />
-<link rel="stylesheet" href="/static/index.css" type="text/css" /></head><body><div id="wrapper"><div class="header mobile-hidden">
-  <div class="placeholder"></div>
-  <div class="title">
-    <a href="javascript:;">ARTICLE</a>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet"
+    type="text/css" />
+  <link rel="stylesheet" href="/static/common.css" type="text/css" />
+  <link rel="stylesheet" href="/static/index.css" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="header mobile-hidden">
+      <div class="placeholder"></div>
+      <div class="title">
+        <a href="javascript:;">ARTICLE1</a>
+      </div>
+      <p class="links placeholder">
+        <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+        <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+        <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+      </p>
+    </div>
+    <div class="header pc-hidden">
+      <a href="javascript:;">ARTICLE</a>
+    </div>
+    <p class="links pc-hidden">
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+    </p>
+    <div class="main">
+      <ul>
+        <li>
+          <h3></h3>
+          <h2 class="top"><span>#置顶#</span><a href="/project/index.html">我的作品</a></h2>
+        </li>
+        <li>
+          <h3>May 22, 2020</h3>
+          <h2><a href="/article/leetcode.html">leetcode刷题实录</a></h2>
+        </li>
+        <li>
+          <h3>Oct 18, 2019</h3>
+          <h2><a href="/article/await.html">javascript事件之async/await</a></h2>
+        </li>
+        <li>
+          <h3>Oct 17, 2019</h3>
+          <h2><a href="/article/promise.html">javascript事件之promise前世今生</a></h2>
+        </li>
+        <li>
+          <h3>Oct 15, 2019</h3>
+          <h2><a href="/article/async.html">javascript事件之Event Loop</a></h2>
+        </li>
+      </ul>
+    </div>
+    <div class="pagination mobile-hidden"><a id="older" class="blog-nav" href="/page/2">OLDER&nbsp;&gt;</a></div><canvas
+      id="canv"></canvas>
+    <script>
+      var $process = {}
+    </script>
+    <script src="https://yourlies.github.io/weather/drop.js"></script>
+    <script src="https://yourlies.github.io/weather/weather.js"></script>
+    <script>
+      ;
+      (function () {
+        var watchers = []
+        var canv = document.getElementById('canv')
+        var ctx = canv.getContext('2d')
+        var width = window.innerWidth
+        var height = window.innerHeight
+        var drop = new $process.Drop({
+          canv: canv,
+          ctx: ctx
+        })
+        var recycle = function (e) {
+          drop.watcher({
+            x: e.x,
+            y: e.y,
+            forward: 1
+          })
+        }
+        var rainy = new $process.Rainy({
+          recycle: recycle,
+          ctx: ctx
+        })
+        watchers.push(drop)
+        watchers.push(rainy)
+        var raf = function () {
+          ctx.clearRect(0, 0, width, height)
+          watchers.forEach(function (e) {
+            e.updater()
+          })
+          requestAnimationFrame(raf)
+        }
+        requestAnimationFrame(raf)
+        window.onmousedown = function (e) {
+          drop.watcher({
+            x: e.clientX,
+            y: e.clientY
+          })
+        }
+      })()
+    </script>
   </div>
-  <p class="links placeholder">
-    <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
-    <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
-    <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
-  </p>
-</div>
-<div class="header pc-hidden">
-  <a href="javascript:;">ARTICLE</a>
-</div>
-<p class="links pc-hidden">
-  <a href="javascript:;" target="_blank"><img src="/static/twitter.png"/></a>
-  <a href="javascript:;" target="_blank"><img src="/static/github.png"/></a>
-  <a href="javascript:;" target="_blank"><img src="/static/feed.png"/></a>
-</p>
-<div class="main"><ul><li><h3></h3><h2 class="top"><span>#置顶#</span><a href="/project/index.html">我的作品</a></h2></li><li><h3>May 22, 2020</h3><h2><a href="/article/leetcode.html">leetcode刷题实录</a></h2></li><li><h3>Oct 18, 2019</h3><h2><a href="/article/await.html">javascript事件之async/await</a></h2></li><li><h3>Oct 17, 2019</h3><h2><a href="/article/promise.html">javascript事件之promise前世今生</a></h2></li><li><h3>Oct 15, 2019</h3><h2><a href="/article/async.html">javascript事件之Event Loop</a></h2></li></ul></div><div class="pagination mobile-hidden"><a id="older" class="blog-nav" href="/page/2">OLDER&nbsp;&gt;</a></div><canvas id="canv"></canvas>
-<script>
-  var $process = {}
-</script>
-<script src="https://yourlies.github.io/weather/drop.js"></script>
-<script src="https://yourlies.github.io/weather/weather.js"></script>
-<script>
-  ;(function() {
-    var watchers = []
-    var canv = document.getElementById('canv')
-    var ctx = canv.getContext('2d')
-    var width = window.innerWidth
-    var height = window.innerHeight
-    var drop = new $process.Drop({ canv: canv, ctx: ctx })
-    var recycle = function(e) {
-      drop.watcher({ x: e.x, y: e.y, forward: 1 })
-    }
-    var rainy = new $process.Rainy({ recycle: recycle, ctx: ctx })
-    watchers.push(drop)
-    watchers.push(rainy)
-    var raf = function() {
-      ctx.clearRect(0, 0, width, height)
-      watchers.forEach(function(e) {
-        e.updater()
-      })
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-    window.onmousedown = function(e) {
-      drop.watcher({ x: e.clientX, y: e.clientY })
-    }
-  })()
-</script>
-</div></body></html>
+</body>
+
+</html>
