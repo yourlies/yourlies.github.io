@@ -191,6 +191,14 @@ PS C:\Users\95814\Documents\lies\python-script> python .\function.py
       </div>
       <canvas id="canv" width="1000px" height="1000px"></canvas>
       <script>
+        const imgs = document.querySelectorAll("img");
+        for (let i = 0; i < imgs.length; i++) {
+          imgs[i].onclick = function () {
+            window.open(imgs[i].getAttribute("src"));
+          };
+        }
+      </script>
+      <script>
         var $process = {};
       </script>
       <script src="https://yourlies.github.io/weather/bundle.js"></script>
