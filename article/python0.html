@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="/static/common.css" type="text/css" />
+    <link rel="stylesheet" href="/static/analysis.css" type="text/css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <!-- pc header -->
+      <div class="header mobile-hidden">
+        <div class="placeholder"></div>
+        <div class="title">
+          <h1>python图色脚本系列序章</h1>
+        </div>
+        <div class="subtitle">
+          <p class="author">因雨而生</p>
+          <p class="links placeholder">
+            <a href="javascript:;" target="_blank"
+              ><img src="/static/twitter.png"
+            /></a>
+            <a href="javascript:;" target="_blank"
+              ><img src="/static/github.png"
+            /></a>
+            <a href="javascript:;" target="_blank"
+              ><img src="/static/feed.png"
+            /></a>
+          </p>
+        </div>
+      </div>
+      <!-- mobile header -->
+      <div class="header pc-hidden">
+        <a href="javascript:;">python图色脚本系列序章</a>
+      </div>
+      <p class="links pc-hidden">
+        <a href="javascript:;" class="author">lies</a>
+        <a href="javascript:;" target="_blank"
+          ><img src="/static/twitter.png"
+        /></a>
+        <a href="javascript:;" target="_blank"
+          ><img src="/static/github.png"
+        /></a>
+        <a href="javascript:;" target="_blank"
+          ><img src="/static/feed.png"
+        /></a>
+      </p>
+      <div class="main post">
+        <div class="title">
+          <h2>前言</h2>
+        </div>
+        <div class="block">
+          <p>基础入门必备技能</p>
+          <ul>
+            <li>1. 安装python环境</li>
+            <li>2. 安装代码编辑器vscode</li>
+            <li>3. 了解python的变量定义，函数定义</li>
+            <li>4. 了解python的库，以及如何使用</li>
+          </ul>
+          <p>序章将着重在这三个点进行入门知识的讲解</p>
+        </div>
+        <div class="title">
+          <h2>如何安装python环境</h2>
+        </div>
+        <div class="block">
+          <p>
+            笔者所使用的版本，以及后续教程均采用python3.8.10版本，因此建议读者也安装此版本，以免产生不必要的版本冲突问题
+          </p>
+          <ul>
+            <li>
+              1. 进入python官网<a
+                target="_blank"
+                href="https://www.python.org/downloads/release/python-3810/"
+                >python3.8.10</a
+              >，选择Windows installer (64-bit)下载并安装
+            </li>
+            <li>2. 打开windows终端并输入<code>python --version</code></li>
+          </ul>
+          <p>如果出现以下提示则说明环境已成功安装</p>
+          <pre>
+PS C:\Users\****> python --version
+Python 3.8.10</pre
+          >
+          <p>
+            否则说明python没有被成功设置识别，需要配置环境变量，可以看看这篇文章<a
+              target="_blank"
+              href="https://blog.csdn.net/weixin_46371752/article/details/124757123"
+              >如何配置环境变量</a
+            >
+          </p>
+        </div>
+        <div class="title">
+          <h2>安装vscode</h2>
+        </div>
+        <div class="block">
+          <ul>
+            <li>
+              1. 进入vscode官网<a
+                target="_blank"
+                href="https://code.visualstudio.com/"
+                >vscode</a
+              >下载并安装
+            </li>
+          </ul>
+        </div>
+        <div class="title">
+          <h2>什么是变量</h2>
+        </div>
+        <div class="block">
+          <p>
+            变量来源于数学，是计算机语言中能储存计算结果或能表示值的抽象概念
+          </p>
+          <p>简单的说就是，定义一个用来储存值的记号</p>
+          <p>1. 首先我们在文档文件中新建一个项目python-script</p>
+          <p>
+            <img width="100%" src="/static/python0.png" alt="" />
+          </p>
+          <p>
+            2.
+            用vscode打开这个项目，并双击左侧的列表区域，新建文件demo.py，如同所示
+          </p>
+          <p>
+            <img width="100%" src="/static/python1.png" alt="" />
+          </p>
+          <p>3. 打开windows终端，我们定位到当前文件夹，如图所示</p>
+          <p>
+            <img width="100%" src="/static/python0.png" alt="" />
+          </p>
+          <p>一切准备就绪，接下来进入正题</p>
+          <p>我们在编辑器中输入</p>
+          <pre>
+title = "hello world"
+print(title)
+number = 1
+number = number + 1
+print(number)</pre
+          >
+          <p>然后切换到windows终端中输入，不出意外的话，显示内容将和如下一致</p>
+          <pre>
+PS C:\Users\95814\Documents\lies\python-script> python .\demo.py
+hello world
+2</pre
+          >
+          <p>实际演示效果</p>
+          <p>
+            <img width="100%" src="/static/python3.png" alt="" />
+          </p>
+          <p>
+            <img width="100%" src="/static/python4.png" alt="" />
+          </p>
+        </div>
+      </div>
+      <canvas id="canv" width="1000px" height="1000px"></canvas>
+      <script>
+        var $process = {};
+      </script>
+      <script src="https://yourlies.github.io/weather/bundle.js"></script>
+      <script>
+        (function () {
+          const canv = document.getElementById("canv");
+          const ctx = canv.getContext("2d");
+          const particleContext = {
+            width: canv.width,
+            height: canv.height,
+            leans: 0.5,
+            gravity: 6,
+          };
+          const update = function () {
+            const particle = new $process.Particle(this.particleContext);
+            this.particles.push(particle);
+          };
+          const weather = new $process.Weather({
+            canv,
+            ctx,
+            particleContext,
+            update,
+          });
+          const rainy = new $process.Rainy(weather);
+
+          const updater = function () {
+            ctx.clearRect(0, 0, canv.width, canv.height);
+            rainy.updater();
+            requestAnimationFrame(updater);
+            if (weather.particles.length < 3) {
+              weather.updater();
+            }
+          };
+          requestAnimationFrame(updater);
+        })();
+      </script>
+    </div>
+  </body>
+</html>
