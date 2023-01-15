@@ -7,6 +7,7 @@
     type="text/css" />
   <link rel="stylesheet" href="/static/common.css" type="text/css" />
   <link rel="stylesheet" href="/static/analysis.css" type="text/css" />
+  <link rel="stylesheet" href="/static/code.css" type="text/css" />
 </head>
 
 <body>
@@ -48,7 +49,7 @@
           <li>3. 了解python的变量定义，函数定义</li>
           <li>4. 了解python的库，以及如何使用</li>
         </ul>
-        <p>序章将着重在这三个点进行入门知识的讲解</p>
+        <p>序章将着重在这四个点进行讲解</p>
       </div>
       <div class="title">
         <h2>如何安装python环境</h2>
@@ -63,14 +64,15 @@
               href="https://www.python.org/downloads/release/python-3810/">python3.8.10</a>，选择Windows installer
             (64-bit)下载并安装
           </li>
-          <li>2. 打开windows终端并输入<code>python --version</code></li>
+          <li>2. 右键屏幕底部任务栏win图标，选择windows终端（管理员）</li>
+          <li>3. 输入<code>python --version</code></li>
         </ul>
         <p>如果出现以下提示则说明环境已成功安装</p>
         <pre>
 PS C:\Users\****> python --version
 Python 3.8.10</pre>
         <p>
-          否则说明python没有被成功设置识别，需要配置环境变量，可以看看这篇文章<a target="_blank"
+          否则说明python没有被成功设置识别，需要配置环境变量，<a target="_blank"
             href="https://blog.csdn.net/weixin_46371752/article/details/124757123">如何配置环境变量</a>
         </p>
       </div>
@@ -80,7 +82,7 @@ Python 3.8.10</pre>
       <div class="block">
         <ul>
           <li>
-            1. 进入vscode官网<a target="_blank" href="https://code.visualstudio.com/">vscode</a>下载并安装
+            1. 进入<a target="_blank" href="https://code.visualstudio.com/">vscode官网</a>下载并安装
           </li>
         </ul>
       </div>
@@ -98,7 +100,7 @@ Python 3.8.10</pre>
         </p>
         <p>
           2.
-          用vscode打开这个项目，并双击左侧的列表区域，新建文件demo.py，如同所示
+          用vscode打开这个项目，并双击左侧的列表区域，新建文件value.py，如同所示
         </p>
         <p>
           <img width="100%" src="/static/python1.png" alt="" />
@@ -110,11 +112,17 @@ Python 3.8.10</pre>
         <p>一切准备就绪，接下来进入正题</p>
         <p>我们在编辑器中输入</p>
         <pre>
-title = "hello world"
-print(title)
-number = 1
-number = number + 1
-print(number)</pre>
+<span class="comment"># #称之为注释，没有实际意义，只是单纯用于解释说明</span>
+<span class="comment"># 定义一个名为title的变量，并对其赋值hello world</span>
+<span class="value">title</span> <span class="equal">=</span> <span class="string">"hello world"</span>
+<span class="comment"># 打印这个变量，输出结果是hello world</span>
+<span class="function">print</span>(<span class="value">title</span>)
+<span class="comment"># 定义一个名为number的变量，并对其赋值为1</span>
+<span class="value">number</span> <span class="equal">=</span> <span class="number">1</span>
+<span class="comment"># 重新赋值number的变量，新的值为number + 1</span>
+<span class="value">number</span> <span class="equal">=</span> <span class="value">number</span> + <span class="number">1</span>
+<span class="comment"># 打印这个变量，1+1=2，最后输出结果应该是2</span>
+print(<span class="value">number</span>)</pre>
         <p>然后切换到windows终端中输入，不出意外的话，显示内容将和如下一致</p>
         <pre>
 PS C:\Users\95814\Documents\lies\python-script> python .\demo.py
@@ -135,13 +143,18 @@ hello world
         <p>
           简单来说，就是y=f(x)，我们定义一个式子f(x)，只要我们把x代入，就会得到y
         </p>
-        <p>在编辑器中输入</p>
+        <p>同理我们新建一个文件function.py</p>
+        <p>并在编辑器中输入</p>
         <pre>
-def counter(number):
-    print(number + 1)
+<span class="comment"># 在python中，定义函数的方式如下，照抄即可</span>
+<span class="comment"># 其中counter为函数名，number称之为参数名，都是可以自己随便取的</span>
+<span class="comment"># 可以把这个函数简单理解成f(x) = x + 1</span>
+<span class="identifier">def</span> <span class="function">counter</span>(<span class="param">number</span>):
+    <span class="function">print</span>(<span class="param">number</span> + <span class="number">1</span>)
 
 
-counter(10)</pre>
+# 调用这个函数，并传入参数10，运行结果为输出11
+<span class="function">counter</span>(<span class="number">10</span>)</pre>
         <p>切换至终端并输入，会得到如下结果</p>
         <pre>
 PS C:\Users\95814\Documents\lies\python-script> python .\function.py
