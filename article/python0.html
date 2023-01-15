@@ -1,0 +1,205 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet"
+    type="text/css" />
+  <link rel="stylesheet" href="/static/common.css" type="text/css" />
+  <link rel="stylesheet" href="/static/analysis.css" type="text/css" />
+  <link rel="stylesheet" href="/static/code.css" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- pc header -->
+    <div class="header mobile-hidden">
+      <div class="placeholder"></div>
+      <div class="title">
+        <h1>python图色脚本系列序章</h1>
+      </div>
+      <div class="subtitle">
+        <p class="author">因雨而生</p>
+        <p class="links placeholder">
+          <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+          <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+          <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+        </p>
+      </div>
+    </div>
+    <!-- mobile header -->
+    <div class="header pc-hidden">
+      <a href="javascript:;">python图色脚本系列序章</a>
+    </div>
+    <p class="links pc-hidden">
+      <a href="javascript:;" class="author">lies</a>
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+    </p>
+    <div class="main post">
+      <div class="title">
+        <h2>前言</h2>
+      </div>
+      <div class="block">
+        <p>基础入门必备技能</p>
+        <ul>
+          <li>1. 安装python环境</li>
+          <li>2. 安装代码编辑器vscode</li>
+          <li>3. 了解python的变量定义，函数定义</li>
+          <li>4. 了解python的库，以及如何使用</li>
+        </ul>
+        <p>序章将着重在这四个点进行讲解</p>
+      </div>
+      <div class="title">
+        <h2>如何安装python环境</h2>
+      </div>
+      <div class="block">
+        <p>
+          笔者所使用的版本，以及后续教程均采用python3.8.10版本，因此建议读者也安装此版本，以免产生不必要的版本冲突问题
+        </p>
+        <ul>
+          <li>
+            1. 进入python官网<a target="_blank"
+              href="https://www.python.org/downloads/release/python-3810/">python3.8.10</a>，选择Windows installer
+            (64-bit)下载并安装
+          </li>
+          <li>2. 右键屏幕底部任务栏win图标，选择windows终端（管理员）</li>
+          <li>3. 输入<code>python --version</code></li>
+        </ul>
+        <p>如果出现以下提示则说明环境已成功安装</p>
+        <pre>
+PS C:\Users\****> python --version
+Python 3.8.10</pre>
+        <p>
+          否则说明python没有被成功设置识别，需要配置环境变量，<a target="_blank"
+            href="https://blog.csdn.net/weixin_46371752/article/details/124757123">如何配置环境变量</a>
+        </p>
+      </div>
+      <div class="title">
+        <h2>安装vscode</h2>
+      </div>
+      <div class="block">
+        <ul>
+          <li>
+            1. 进入<a target="_blank" href="https://code.visualstudio.com/">vscode官网</a>下载并安装
+          </li>
+        </ul>
+      </div>
+      <div class="title">
+        <h2>什么是变量</h2>
+      </div>
+      <div class="block">
+        <p>
+          变量来源于数学，是计算机语言中能储存计算结果或能表示值的抽象概念
+        </p>
+        <p>简单的说就是，定义一个用来储存值的记号</p>
+        <p>1. 首先我们在文档文件中新建一个项目python-script</p>
+        <p>
+          <img width="100%" src="/static/python0.png" alt="" />
+        </p>
+        <p>
+          2.
+          用vscode打开这个项目，并双击左侧的列表区域，新建文件value.py，如同所示
+        </p>
+        <p>
+          <img width="100%" src="/static/python1.png" alt="" />
+        </p>
+        <p>3. 打开windows终端，我们定位到当前文件夹，如图所示</p>
+        <p>
+          <img width="100%" src="/static/python2.png" alt="" />
+        </p>
+        <p>一切准备就绪，接下来进入正题</p>
+        <p>我们在编辑器中输入</p>
+        <pre>
+<span class="comment"># #称之为注释，没有实际意义，只是单纯用于解释说明</span>
+<span class="comment"># 定义一个名为title的变量，并对其赋值hello world</span>
+<span class="value">title</span> <span class="equal">=</span> <span class="string">"hello world"</span>
+<span class="comment"># 打印这个变量，输出结果是hello world</span>
+<span class="function">print</span>(<span class="value">title</span>)
+<span class="comment"># 定义一个名为number的变量，并对其赋值为1</span>
+<span class="value">number</span> <span class="equal">=</span> <span class="number">1</span>
+<span class="comment"># 重新赋值number的变量，新的值为number + 1</span>
+<span class="value">number</span> <span class="equal">=</span> <span class="value">number</span> + <span class="number">1</span>
+<span class="comment"># 打印这个变量，1+1=2，最后输出结果应该是2</span>
+print(<span class="value">number</span>)</pre>
+        <p>然后切换到windows终端中输入，不出意外的话，显示内容将和如下一致</p>
+        <pre>
+PS C:\Users\95814\Documents\lies\python-script> python .\demo.py
+hello world
+2</pre>
+        <p>实际演示效果</p>
+        <p>
+          <img width="100%" src="/static/python3.png" alt="" />
+        </p>
+        <p>
+          <img width="100%" src="/static/python4.png" alt="" />
+        </p>
+      </div>
+      <div class="title">
+        <h2>什么是函数</h2>
+      </div>
+      <div class="block">
+        <p>
+          简单来说，就是y=f(x)，我们定义一个式子f(x)，只要我们把x代入，就会得到y
+        </p>
+        <p>同理我们新建一个文件function.py</p>
+        <p>并在编辑器中输入</p>
+        <pre>
+<span class="comment"># 在python中，定义函数的方式如下，照抄即可</span>
+<span class="comment"># 其中counter为函数名，number称之为参数名，都是可以自己随便取的</span>
+<span class="comment"># 可以把这个函数简单理解成f(x) = x + 1</span>
+<span class="identifier">def</span> <span class="function">counter</span>(<span class="param">number</span>):
+    <span class="function">print</span>(<span class="param">number</span> + <span class="number">1</span>)
+
+
+# 调用这个函数，并传入参数10，运行结果为输出11
+<span class="function">counter</span>(<span class="number">10</span>)</pre>
+        <p>切换至终端并输入，会得到如下结果</p>
+        <pre>
+PS C:\Users\95814\Documents\lies\python-script> python .\function.py
+11</pre>
+        <p>实际演示效果</p>
+        <p>
+          <img width="100%" src="/static/python5.png" alt="" />
+        </p>
+        <p>
+          <img width="100%" src="/static/python6.png" alt="" />
+        </p>
+        <p>
+          定义一个函数和变量其实非常简单，而看似复杂的功能，其实拆成一个个函数和变量来看，也都是非常简单的
+        </p>
+        <p>我们后续会定义很多这样简单的函数和变量，来完成一些复杂的功能</p>
+      </div>
+      <div class="title">
+        <h2>什么是库</h2>
+      </div>
+      <div class="block">
+        <p>
+          你可以把库理解成一个工具箱，别人帮你做好了钳子，把手和大锤。又或者你心灵手巧，猛男也绣花，那你可能需要去购买一些绣花N件套，针线啊，丝线啊这些半成品
+        </p>
+        <p>就这么简单，你总不可能绣花从冶铁开始，对吧</p>
+        <p>
+          对于库的了解知道这么多就够了，本身也并不复杂，后续会在实战中进一步讲解
+        </p>
+      </div>
+    </div>
+    <canvas id="canv"></canvas>
+    <script>
+      const imgs = document.querySelectorAll("img");
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function () {
+          window.open(imgs[i].getAttribute("src"));
+        };
+      }
+    </script>
+    <script>
+      var $process = {};
+    </script>
+    <script src="https://yourlies.github.io/weather/bundle.js"></script>
+    <script src="https://yourlies.github.io/weather/drop.js"></script>
+    <script src="https://yourlies.github.io/weather/demo.js"></script>
+  </div>
+</body>
+
+</html>
