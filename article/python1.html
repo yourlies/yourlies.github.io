@@ -187,7 +187,7 @@ pixels = [pixels_black, pixels_black, pixels_black, pixels_black]</pre>
           const image_0 = new Image()
           ctx_0.drawImage(image, 0, 0, 10, 4)
           const imageData_0 = ctx_0.getImageData(0, 0, 10, 4)
-          for (let i = 0; i < 400; i++) {
+          for (let i = 0; i < 40; i++) {
             // imageData_0.data[4 * i] = 255
             imageData_0.data[4 * i + 3] = 255
           }
@@ -204,12 +204,34 @@ pixels = [pixels_red, pixels_red, pixels_red, pixels_red]</pre>
           const image_1 = new Image()
           ctx_1.drawImage(image, 0, 0, 10, 4)
           const imageData_1 = ctx_1.getImageData(0, 0, 10, 4)
-          for (let i = 0; i < 400; i++) {
+          for (let i = 0; i < 40; i++) {
             imageData_1.data[4 * i] = 255
             imageData_1.data[4 * i + 3] = 255
           }
           ctx_1.putImageData(imageData_1, 0, 0)
           console.log(imageData_1.data)
+        </script>
+        <pre>
+<span class="comment"># 同理，看到这里应该读者明白咋回事了</span>
+pixels = [pixels_red, pixels_black, pixels_red, pixels_black]</pre>
+        <canvas id="pixels-demo-2" height="20"></canvas>
+        <script>
+          const canv_2 = document.getElementById('pixels-demo-2')
+          const ctx_2 = canv_2.getContext('2d')
+          const image_2 = new Image()
+          ctx_2.drawImage(image, 0, 0, 10, 4)
+          const imageData_2 = ctx_2.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 40; i++) {
+            if (i < 10) {
+              imageData_2.data[4 * i] = 255
+            }
+            if (i > 19 && i < 30) {
+              imageData_2.data[4 * i] = 255
+            }
+            imageData_2.data[4 * i + 3] = 255
+          }
+          ctx_2.putImageData(imageData_2, 0, 0)
+          console.log(imageData_2.data)
         </script>
       </div>
     </div>
