@@ -166,6 +166,51 @@ pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
         <p>
           <img width="100%" src="/static/python11.png" alt="" />
         </p>
+        <p>我们来整点更加因垂丝汀的</p>
+        <pre>
+<span class="comment"># 首先来定义一行十个黑色像素的像素集</span>
+pixels_black = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255,
+  0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 
+  0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]
+<span class="comment"># 定义一行十个红色像素的像素集</span>
+pixels_red = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255,
+  255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 
+  255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
+        <p>我们来进行一个简单的排列组合</p>
+        <pre>
+<span class="comment"># 我pixels数组里放了四个pixels_black，渲染出来的结果会是4*10像素的黑色图形</span>
+pixels = [pixels_black, pixels_black, pixels_black, pixels_black]</pre>
+        <canvas id="pixels-demo-0" height="20"></canvas>
+        <script>
+          const canv_0 = document.getElementById('pixels-demo-0')
+          const ctx_0 = canv_0.getContext('2d')
+          const image_0 = new Image()
+          ctx_0.drawImage(image, 0, 0, 10, 4)
+          const imageData_0 = ctx_0.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 400; i++) {
+            // imageData_0.data[4 * i] = 255
+            imageData_0.data[4 * i + 3] = 255
+          }
+          ctx_0.putImageData(imageData_0, 0, 0)
+          console.log(imageData_0.data)
+        </script>
+        <pre>
+<span class="comment"># 我pixels数组里放了四个pixels_red，渲染出来的结果会是4*10像素的红色图形</span>
+pixels = [pixels_red, pixels_red, pixels_red, pixels_red]</pre>
+        <canvas id="pixels-demo-1" height="20"></canvas>
+        <script>
+          const canv_1 = document.getElementById('pixels-demo-1')
+          const ctx_1 = canv_1.getContext('2d')
+          const image_1 = new Image()
+          ctx_1.drawImage(image, 0, 0, 10, 4)
+          const imageData_1 = ctx_1.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 400; i++) {
+            imageData_1.data[4 * i] = 255
+            imageData_1.data[4 * i + 3] = 255
+          }
+          ctx_1.putImageData(imageData_1, 0, 0)
+          console.log(imageData_1.data)
+        </script>
       </div>
     </div>
     <canvas id="canv"></canvas>
