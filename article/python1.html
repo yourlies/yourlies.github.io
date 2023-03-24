@@ -129,7 +129,7 @@ pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
 <span class="comment"># 画一个宽度为4，长度为一的空白画布，并获取它的像素数组</span>
   ctx.drawImage(image, 0, 0, 4, 1)
   const imageData = ctx.getImageData(0, 0, 4, 1)
-<span class="comment"># 每隔四个元素操作一下它的r值</span>
+<span class="comment"># 每隔四个元素操作一下它的a值</span>
   for (let i = 0; i < 4; i++) {
     imageData.data[4 * i + 3] = 255
   }
