@@ -1,6 +1,8 @@
 pre {
   background-color: rgb(0, 36, 81);
   color: rgb(187, 218, 255);
+  max-width: 100%;
+  overflow-x: scroll;
 }
 pre span.comment {
   color: rgb(114, 133, 183);
