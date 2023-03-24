@@ -1,5 +1,6 @@
 body {
-  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, serif;
+  font-family: "Roboto", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, serif;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -11,7 +12,7 @@ body {
   margin: 0;
 }
 
-img  {
+img {
   cursor: pointer;
 }
 
@@ -66,7 +67,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, sans-serif;
   font-weight: 400;
   color: #333;
 }
@@ -78,7 +80,8 @@ h6 {
 }
 .links {
   text-align: center;
-  font-family: 'Roboto', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, serif;
+  font-family: "Roboto", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, serif;
   color: #999;
 }
 .placeholder {
@@ -204,7 +207,8 @@ h6 {
   position: absolute;
   height: 20px;
   line-height: 20px;
-  font-family: 'Montserrat', 'Helvetica Neue', 'Hiragino Sans GB', 'LiHei Pro', Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, sans-serif;
   font-size: 19px;
   color: #666;
   text-decoration: none;
@@ -220,4 +224,8 @@ h6 {
 .blog-nav:hover {
   color: #f33;
   border-bottom-color: #f33;
+}
+
+.pt20 {
+  padding-top: 20px;
 }
