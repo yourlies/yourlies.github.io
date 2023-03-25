@@ -229,3 +229,22 @@ h6 {
 .pt20 {
   padding-top: 20px;
 }
+
+.button-block {
+  padding: 20px;
+  border: 1px red;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #888 inset;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+}
+.post .button-block span.btn {
+  display: inline-block;
+  padding: 2px 15px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #409eff;
+  color: #fff;
+  cursor: pointer;
+}

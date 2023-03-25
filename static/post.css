@@ -113,7 +113,7 @@ pre .xml .cdata {
   position: relative;
 }
 .post h2:before {
-  content: '';
+  content: "";
   border-left: 5px solid #f66;
   position: absolute;
   left: -15px;
@@ -127,7 +127,8 @@ pre .xml .cdata {
   color: #42b983;
 }
 .post .date {
-  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, sans-serif;
   font-size: 13px;
   color: #ddd;
   margin: 0 0 15px;
@@ -238,7 +239,8 @@ pre .xml .cdata {
   bottom: 20px;
   height: 20px;
   line-height: 20px;
-  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, sans-serif;
   font-size: 15px;
   color: #999;
   text-decoration: none;
@@ -257,7 +259,8 @@ pre .xml .cdata {
   right: 40px;
 }
 .show-comments {
-  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro", Arial, sans-serif;
+  font-family: "Montserrat", "Helvetica Neue", "Hiragino Sans GB", "LiHei Pro",
+    Arial, sans-serif;
   text-align: center;
 }
 .show-comments a {

@@ -1,0 +1,262 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link href="//fonts.googleapis.com/css?family=Montserrat|Roboto:400,400italic,600|Roboto+Mono" rel="stylesheet"
+    type="text/css" />
+  <link rel="stylesheet" href="/static/common.css" type="text/css" />
+  <link rel="stylesheet" href="/static/analysis.css" type="text/css" />
+  <link rel="stylesheet" href="/static/code.css" type="text/css" />
+</head>
+
+<body>
+  <div id="wrapper">
+    <!-- pc header -->
+    <div class="header mobile-hidden">
+      <div class="placeholder"></div>
+      <div class="title">
+        <h1>python图色脚本系列第一章</h1>
+      </div>
+      <div class="subtitle">
+        <p class="author">因雨而生</p>
+        <p class="links placeholder">
+          <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+          <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+          <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+        </p>
+      </div>
+    </div>
+    <!-- mobile header -->
+    <div class="header pc-hidden">
+      <a href="javascript:;">python图色脚本系列序章</a>
+    </div>
+    <p class="links pc-hidden">
+      <a href="javascript:;" class="author">因雨而生</a>
+      <a href="javascript:;" target="_blank"><img src="/static/twitter.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/github.png" /></a>
+      <a href="javascript:;" target="_blank"><img src="/static/feed.png" /></a>
+    </p>
+    <div class="main post">
+      <div class="title">
+        <h2>简介</h2>
+      </div>
+      <div class="block">
+        <p>本章知识点</p>
+        <ul>
+          <li>1. 什么是数组</li>
+          <li>2. 认识计算机中的图像</li>
+          <li>2. 计算机中图像的数组表示</li>
+        </ul>
+      </div>
+      <div class="title">
+        <h2>什么是数组</h2>
+      </div>
+      <div class="block">
+        <p>我们先来回忆一下高中数学集合的知识</p>
+        <p>关于集合的最简单的说法就是，集合是“确定的一堆东西”，集合里的“东西”则称为元素，是由一个或多个确定的元素所构成的整体</p>
+        <p>数组是一个用于存放元素的容器，和数学上的集合差不多。现在想象有一辆高铁，现在有10个乘客乘车，我们通过车票座位来对每个乘客进行区分</p>
+        <pre>
+<span class="comment"># 通过以下的方式定义乘有乘客的一辆高铁（一个数组）</span>
+high_speed_train_seats = ['嬴政', '赢麻', '李斯', '刘邦','曹操', '刘备', '孙权', '诸葛亮', '张飞', '关羽']</pre>
+        <ul>
+          <li>1. 由于计算机数组从0开始算起，因此第0号座位的乘客，high_speed_train_seats[0]是“嬴政”</li>
+          <li>2. 同理high_speed_train_seats[1]是“嬴麻”</li>
+          <li>3. high_speed_train_seats[9]是“关羽”</li>
+        </ul>
+        <pre>
+<span class="comment"># 通过以下的方式定义有两节车厢高铁（一个二维数组）</span>
+<span class="comment"># 车厢a的乘客</span>
+high_speed_train_a = ['嬴政', '赢麻', '李斯', '刘邦','曹操', '刘备', '孙权', '诸葛亮', '张飞', '关羽']
+<span class="comment"># 车厢b的乘客</span>
+high_speed_train_b = ['金老师', '小金', '金先森', '啊金', '张三', '张四', '张五', '张六', '张飞飞', '开羽']
+<span class="comment"># 拥有两节车厢的高铁</span>
+high_speed_train = [high_speed_train_a, high_speed_train_b]
+<span class="comment"># 你也可以这样定义拥有两节车厢的高铁</span>
+high_speed_train = [
+  ['嬴政', '赢麻', '李斯', '刘邦','曹操', '刘备', '孙权', '诸葛亮', '张飞', '关羽'],
+  ['金老师', '小金', '金先森', '啊金', '张三', '张四', '张五', '张六', '张飞飞', '开羽']
+]
+</pre>
+
+        <ul>
+          <li>1. 由于计算机数组从0开始算起，因此第0车厢第0号座位的乘客，high_speed_train[0][0]是“嬴政”</li>
+          <li>2. 同理high_speed_train[1][0]是“金老师”</li>
+          <li>3. high_speed_train[1][1]是“小金”</li>
+        </ul>
+        <img width="100%" src="/static/python7.png" alt="" />
+        <p class="pt20">简单吗，是的很简单</p>
+        <img src="/static/python1_0.gif" alt="" />
+      </div>
+      <div class="title">
+        <h2>认识计算机中的图像</h2>
+      </div>
+      <div class="block">
+        <p>
+          我们首先来观察一下这张图
+        </p>
+        <p>
+          <img style="max-width: 100%;" src="/static/python1_1.png" alt="" />
+        </p>
+        <p>可以看到，这张图是有一个一个颜色点构成的，在计算机中，这样的点被称为像素点，时间特别闲的读者可以试着自己去数一下一横的点数和一竖的点数</p>
+        <p>不过我知道你懒得数，所以毋须担心，笔者已经帮你数好了，横31个点，竖40个点，因此这张图的像素点有31*40，1240个</p>
+        <p>我们不妨用集合的方式来描述这1240个像素点{ 像素点0, 像素点1, ···, 像素点1239, 像素点1240 }</p>
+        <pre>
+<span class="comment"># 我们改用更专业的方式来描述这个1240个像素</span>
+<span class="comment"># 把1240个元素都写出来太累了，因此象征性的随便写一下</span>
+pixels_demo_img = ['像素点0', '像素点1', '像素点1240']
+<span class="comment"># 讨论一张大小是1240像素点的图像对于入门学习而言毕竟太复杂了</span>
+<span class="comment"># 因此我们定义一个4像素点的图像数组，用于讲解</span>
+pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
+
+      </div>
+      <div class="title">
+        <h2>计算机中图像的数组表示</h2>
+      </div>
+      <div class="block">
+        <p>我们现在来实操一下，使用js绘制一个4*1长度的图像（仔细看这一行字下面有黑色的小点）</p>
+
+        <p>这行黑点的数组表示为</p>
+        <pre>
+<span class="comment"># 这行黑点总共有四个像素</span>
+<span class="comment"># 在数组中，用四个元素来代表一个像素，在这里即0, 0, 0, 255</span>
+<span class="comment"># 其中0, 0, 0, 255分别代表rgba四个值</span>
+<span class="comment"># 这个数组描述了四个rgba均为0, 0, 0, 255的像素集</span>
+pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-black" style="display: none;">
+          <text>此为放大了很多倍的演示效果</text>
+        </svg>
+        <p class="button-block">
+          <span>pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</span>
+          <span class="btn" id="pixels-demo-black-btn">渲染</span>
+        </p>
+        <script>
+          const canv = document.getElementById('pixels-demo-black')
+          const btn = document.getElementById('pixels-demo-black-btn')
+          btn.onclick = () => {
+            canv.nextSibling.nextSibling.style.display = 'none'
+            canv.style.display = ''
+          }
+          // const ctx = canv.getContext('2d')
+          // const image = new Image()
+          // ctx.drawImage(image, 0, 0, 4, 1)
+          // const imageData = ctx.getImageData(0, 0, 4, 1)
+          // for (let i = 0; i < 4; i++) {
+          //   imageData.data[4 * i + 3] = 255
+          // }
+          // ctx.putImageData(imageData, 0, 0)
+          // console.log(imageData.data)
+        </script>
+        <p>我们再使用js绘制一个4*1长度的图像（仔细看这一行字下面有红色的小点）</p>
+        <p>
+          pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]
+        </p>
+        <canvas id="pixels-demo-red" height="20"></canvas>
+        <p>这行红点的数组表示为</p>
+        <pre>
+<span class="comment"># 这行红点总共有四个像素</span>
+<span class="comment"># 在数组中，用四个元素来代表一个像素，在这里即255, 0, 0, 255</span>
+<span class="comment"># 其中255, 0, 0, 255分别代表rgba四个值</span>
+<span class="comment"># 这个数组描述了四个rgba均为255, 0, 0, 255的像素集</span>
+pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
+        <script>
+          const canv_red = document.getElementById('pixels-demo-red')
+          const ctx_red = canv_red.getContext('2d')
+          const image_red = new Image()
+          ctx_red.drawImage(image_red, 0, 0, 4, 1)
+          const imageData_red = ctx_red.getImageData(0, 0, 4, 1)
+          for (let i = 0; i < 4; i++) {
+            imageData_red.data[4 * i] = 255
+            imageData_red.data[4 * i + 3] = 255
+          }
+          ctx_red.putImageData(imageData_red, 0, 0)
+          console.log(imageData_red.data)
+        </script>
+        <p>我们来整点更加因垂丝汀的</p>
+        <pre>
+<span class="comment"># 首先来定义一行十个黑色像素的像素集</span>
+pixels_black = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255,
+  0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 
+  0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]
+<span class="comment"># 定义一行十个红色像素的像素集</span>
+pixels_red = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255,
+  255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 
+  255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
+        <p>我们来进行一个简单的排列组合</p>
+        <pre>
+<span class="comment"># 我pixels数组里放了四个pixels_black，渲染出来的结果会是10*4像素的黑色图形</span>
+pixels = [pixels_black, pixels_black, pixels_black, pixels_black]</pre>
+        <canvas id="pixels-demo-0" height="20"></canvas>
+        <script>
+          const canv_0 = document.getElementById('pixels-demo-0')
+          const ctx_0 = canv_0.getContext('2d')
+          const image_0 = new Image()
+          ctx_0.drawImage(image_0, 0, 0, 10, 4)
+          const imageData_0 = ctx_0.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 40; i++) {
+            // imageData_0.data[4 * i] = 255
+            imageData_0.data[4 * i + 3] = 255
+          }
+          ctx_0.putImageData(imageData_0, 0, 0)
+          console.log(imageData_0.data)
+        </script>
+        <pre>
+<span class="comment"># 我pixels数组里放了四个pixels_red，渲染出来的结果会是10*4像素的红色图形</span>
+pixels = [pixels_red, pixels_red, pixels_red, pixels_red]</pre>
+        <canvas id="pixels-demo-1" height="20"></canvas>
+        <script>
+          const canv_1 = document.getElementById('pixels-demo-1')
+          const ctx_1 = canv_1.getContext('2d')
+          const image_1 = new Image()
+          ctx_1.drawImage(image_1, 0, 0, 10, 4)
+          const imageData_1 = ctx_1.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 40; i++) {
+            imageData_1.data[4 * i] = 255
+            imageData_1.data[4 * i + 3] = 255
+          }
+          ctx_1.putImageData(imageData_1, 0, 0)
+          console.log(imageData_1.data)
+        </script>
+        <pre>
+<span class="comment"># 同理，看到这里读者应该已经明白咋回事了</span>
+pixels = [pixels_red, pixels_black, pixels_red, pixels_black]</pre>
+        <canvas id="pixels-demo-2" height="20"></canvas>
+        <script>
+          const canv_2 = document.getElementById('pixels-demo-2')
+          const ctx_2 = canv_2.getContext('2d')
+          const image_2 = new Image()
+          ctx_2.drawImage(image_2, 0, 0, 10, 4)
+          const imageData_2 = ctx_2.getImageData(0, 0, 10, 4)
+          for (let i = 0; i < 40; i++) {
+            if (i < 10) {
+              imageData_2.data[4 * i] = 255
+            }
+            if (i > 19 && i < 30) {
+              imageData_2.data[4 * i] = 255
+            }
+            imageData_2.data[4 * i + 3] = 255
+          }
+          ctx_2.putImageData(imageData_2, 0, 0)
+          console.log(imageData_2.data)
+        </script>
+      </div>
+    </div>
+    <canvas id="canv"></canvas>
+    <script>
+      const imgs = document.querySelectorAll("img");
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].onclick = function () {
+          window.open(imgs[i].getAttribute("src"));
+        };
+      }
+    </script>
+    <script>
+      var $process = {};
+    </script>
+    <script src="https://yourlies.github.io/weather/bundle.js"></script>
+    <script src="https://yourlies.github.io/weather/drop.js"></script>
+    <script src="https://yourlies.github.io/weather/demo.js"></script>
+  </div>
+</body>
+
+</html>
