@@ -114,7 +114,7 @@ pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
         <h2>计算机中图像的数组表示</h2>
       </div>
       <div class="block">
-        <p>我们现在来实操一下，使用js绘制一个4*1长度的图像（仔细看这一行字下面有黑色的小点）</p>
+        <p>1. 我们现在来实操一下，使用js绘制一个4*1长度的图像（点击渲染可以查看效果）</p>
 
         <p>这行黑点的数组表示为</p>
         <pre>
@@ -123,10 +123,25 @@ pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
 <span class="comment"># 其中0, 0, 0, 255分别代表rgba四个值</span>
 <span class="comment"># 这个数组描述了四个rgba均为0, 0, 0, 255的像素集</span>
 pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-black" style="display: none;">
-          <text>此为放大了很多倍的演示效果</text>
+
+        <svg class="button-block" xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-black"
+          style="display: none;width: 100%;box-sizing: border-box;margin-bottom: 10px;">
+          <text x="0" y="22">此为放大了很多倍的演示效果，鼠标悬浮在像素点上，可以看到该点的rgba值</text>
+          <line x1="0" y1="36" x2="1000" y2="36" style="stroke:#999;stroke-width: 1;stroke-dasharray: 3 3;" />
+          <rect fill="black" width="30" height="30" x="0" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="62" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="93" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
         </svg>
-        <p class="button-block">
+        <p class="button-block" style="height: 150px;">
           <span>pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</span>
           <span class="btn" id="pixels-demo-black-btn">渲染</span>
         </p>
@@ -137,21 +152,8 @@ pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
             canv.nextSibling.nextSibling.style.display = 'none'
             canv.style.display = ''
           }
-          // const ctx = canv.getContext('2d')
-          // const image = new Image()
-          // ctx.drawImage(image, 0, 0, 4, 1)
-          // const imageData = ctx.getImageData(0, 0, 4, 1)
-          // for (let i = 0; i < 4; i++) {
-          //   imageData.data[4 * i + 3] = 255
-          // }
-          // ctx.putImageData(imageData, 0, 0)
-          // console.log(imageData.data)
         </script>
-        <p>我们再使用js绘制一个4*1长度的图像（仔细看这一行字下面有红色的小点）</p>
-        <p>
-          pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]
-        </p>
-        <canvas id="pixels-demo-red" height="20"></canvas>
+        <p style="margin-top: 80px;">2. 我们再使用js绘制一个4*1长度的图像（点击渲染可以查看效果）</p>
         <p>这行红点的数组表示为</p>
         <pre>
 <span class="comment"># 这行红点总共有四个像素</span>
@@ -159,20 +161,37 @@ pixels = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255]</pre>
 <span class="comment"># 其中255, 0, 0, 255分别代表rgba四个值</span>
 <span class="comment"># 这个数组描述了四个rgba均为255, 0, 0, 255的像素集</span>
 pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
+
+        <svg class="button-block" xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-red"
+          style="display: none;width: 100%;box-sizing: border-box;margin-bottom: 10px;">
+          <text x="0" y="22">此为放大了很多倍的演示效果，鼠标悬浮在像素点上，可以看到该点的rgba值</text>
+          <line x1="0" y1="36" x2="1000" y2="36" style="stroke:#999;stroke-width: 1;stroke-dasharray: 3 3;" />
+          <rect fill="red" width="30" height="30" x="0" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="62" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="93" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+        </svg>
+        <p class="button-block" style="height: 150px;">
+          <span>pixels = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</span>
+          <span class="btn" id="pixels-demo-red-btn">渲染</span>
+        </p>
         <script>
           const canv_red = document.getElementById('pixels-demo-red')
-          const ctx_red = canv_red.getContext('2d')
-          const image_red = new Image()
-          ctx_red.drawImage(image_red, 0, 0, 4, 1)
-          const imageData_red = ctx_red.getImageData(0, 0, 4, 1)
-          for (let i = 0; i < 4; i++) {
-            imageData_red.data[4 * i] = 255
-            imageData_red.data[4 * i + 3] = 255
+          const btn_red = document.getElementById('pixels-demo-red-btn')
+          btn_red.onclick = () => {
+            canv_red.nextSibling.nextSibling.style.display = 'none'
+            canv_red.style.display = ''
           }
-          ctx_red.putImageData(imageData_red, 0, 0)
-          console.log(imageData_red.data)
         </script>
-        <p>我们来整点更加因垂丝汀的</p>
+        <p style="margin-top: 60px;">3. 我们来整点更加因垂丝汀的</p>
         <pre>
 <span class="comment"># 首先来定义一行十个黑色像素的像素集</span>
 pixels_black = [0, 0, 0, 255, 0, 0, 0, 255, 0, 0, 0, 255,
@@ -184,60 +203,250 @@ pixels_red = [255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255,
   255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 255]</pre>
         <p>我们来进行一个简单的排列组合</p>
         <pre>
-<span class="comment"># 我pixels数组里放了四个pixels_black，渲染出来的结果会是10*4像素的黑色图形</span>
-pixels = [pixels_black, pixels_black, pixels_black, pixels_black]</pre>
+<span class="comment"># 我pixels数组里放了两个pixels_black，渲染出来的结果会是10*2像素的黑色图形</span>
+pixels = [pixels_black, pixels_black]</pre>
+        <svg class="button-block" xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-0"
+          style="display: none;width: 100%;box-sizing: border-box;margin-bottom: 10px;">
+          <text x="0" y="22">此为放大了很多倍的演示效果，鼠标悬浮在像素点上，可以看到该点的rgba值</text>
+          <line x1="0" y1="36" x2="1000" y2="36" style="stroke:#999;stroke-width: 1;stroke-dasharray: 3 3;" />
+          <rect fill="black" width="30" height="30" x="0" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="62" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="93" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="124" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="155" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="186" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="217" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="248" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="60">
+            <title>0, 0, 0, 255</title>
+          </rect>
+
+          <rect fill="black" width="30" height="30" x="0" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="62" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="93" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="124" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="155" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="186" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="217" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="248" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+        </svg>
+        <p class="button-block" style="height: 150px;">
+          <span>pixels = [pixels_black, pixels_black]</span>
+          <span class="btn" id="pixels-demo-btn-0">渲染</span>
+        </p>
         <canvas id="pixels-demo-0" height="20"></canvas>
         <script>
           const canv_0 = document.getElementById('pixels-demo-0')
-          const ctx_0 = canv_0.getContext('2d')
-          const image_0 = new Image()
-          ctx_0.drawImage(image_0, 0, 0, 10, 4)
-          const imageData_0 = ctx_0.getImageData(0, 0, 10, 4)
-          for (let i = 0; i < 40; i++) {
-            // imageData_0.data[4 * i] = 255
-            imageData_0.data[4 * i + 3] = 255
+          const btn_0 = document.getElementById('pixels-demo-btn-0')
+          btn_0.onclick = () => {
+            canv_0.nextSibling.nextSibling.style.display = 'none'
+            canv_0.style.display = ''
           }
-          ctx_0.putImageData(imageData_0, 0, 0)
-          console.log(imageData_0.data)
         </script>
         <pre>
-<span class="comment"># 我pixels数组里放了四个pixels_red，渲染出来的结果会是10*4像素的红色图形</span>
-pixels = [pixels_red, pixels_red, pixels_red, pixels_red]</pre>
-        <canvas id="pixels-demo-1" height="20"></canvas>
+<span class="comment"># 我pixels数组里放了两个pixels_red，渲染出来的结果会是10*2像素的红色图形</span>
+pixels = [pixels_red, pixels_red]</pre>
+        <svg class="button-block" xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-1"
+          style="display: none;width: 100%;box-sizing: border-box;margin-bottom: 10px;">
+          <text x="0" y="22">此为放大了很多倍的演示效果，鼠标悬浮在像素点上，可以看到该点的rgba值</text>
+          <line x1="0" y1="36" x2="1000" y2="36" style="stroke:#999;stroke-width: 1;stroke-dasharray: 3 3;" />
+          <rect fill="red" width="30" height="30" x="0" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="62" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="93" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="124" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="155" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="186" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="217" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="248" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+
+          <rect fill="red" width="30" height="30" x="0" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="62" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="93" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="124" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="155" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="186" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="217" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="248" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="91">
+            <title>255, 0, 0, 255</title>
+          </rect>
+        </svg>
+        <p class="button-block" style="height: 150px;">
+          <span>pixels = [pixels_red, pixels_red]</span>
+          <span class="btn" id="pixels-demo-btn-1">渲染</span>
+        </p>
+        <canvas id="pixels-demo-0" height="20"></canvas>
         <script>
           const canv_1 = document.getElementById('pixels-demo-1')
-          const ctx_1 = canv_1.getContext('2d')
-          const image_1 = new Image()
-          ctx_1.drawImage(image_1, 0, 0, 10, 4)
-          const imageData_1 = ctx_1.getImageData(0, 0, 10, 4)
-          for (let i = 0; i < 40; i++) {
-            imageData_1.data[4 * i] = 255
-            imageData_1.data[4 * i + 3] = 255
+          const btn_1 = document.getElementById('pixels-demo-btn-1')
+          btn_1.onclick = () => {
+            canv_1.nextSibling.nextSibling.style.display = 'none'
+            canv_1.style.display = ''
           }
-          ctx_1.putImageData(imageData_1, 0, 0)
-          console.log(imageData_1.data)
         </script>
         <pre>
 <span class="comment"># 同理，看到这里读者应该已经明白咋回事了</span>
-pixels = [pixels_red, pixels_black, pixels_red, pixels_black]</pre>
-        <canvas id="pixels-demo-2" height="20"></canvas>
+pixels = [pixels_red, pixels_black]</pre>
+        <svg class="button-block" xmlns="http://www.w3.org/2000/svg" version="1.1" id="pixels-demo-2"
+          style="display: none;width: 100%;box-sizing: border-box;margin-bottom: 10px;">
+          <text x="0" y="22">此为放大了很多倍的演示效果，鼠标悬浮在像素点上，可以看到该点的rgba值</text>
+          <line x1="0" y1="36" x2="1000" y2="36" style="stroke:#999;stroke-width: 1;stroke-dasharray: 3 3;" />
+          <rect fill="red" width="30" height="30" x="0" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="62" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="93" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="124" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="155" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="186" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="217" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="248" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+          <rect fill="red" width="30" height="30" x="31" y="60">
+            <title>255, 0, 0, 255</title>
+          </rect>
+
+          <rect fill="black" width="30" height="30" x="0" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="62" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="93" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="124" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="155" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="186" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="217" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="248" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+          <rect fill="black" width="30" height="30" x="31" y="91">
+            <title>0, 0, 0, 255</title>
+          </rect>
+        </svg>
+        <p class="button-block" style="height: 150px;">
+          <span>pixels = [pixels_red, pixels_black]</span>
+          <span class="btn" id="pixels-demo-btn-2">渲染</span>
+        </p>
+        <canvas id="pixels-demo-0" height="20"></canvas>
         <script>
           const canv_2 = document.getElementById('pixels-demo-2')
-          const ctx_2 = canv_2.getContext('2d')
-          const image_2 = new Image()
-          ctx_2.drawImage(image_2, 0, 0, 10, 4)
-          const imageData_2 = ctx_2.getImageData(0, 0, 10, 4)
-          for (let i = 0; i < 40; i++) {
-            if (i < 10) {
-              imageData_2.data[4 * i] = 255
-            }
-            if (i > 19 && i < 30) {
-              imageData_2.data[4 * i] = 255
-            }
-            imageData_2.data[4 * i + 3] = 255
+          const btn_2 = document.getElementById('pixels-demo-btn-2')
+          btn_2.onclick = () => {
+            canv_2.nextSibling.nextSibling.style.display = 'none'
+            canv_2.style.display = ''
           }
-          ctx_2.putImageData(imageData_2, 0, 0)
-          console.log(imageData_2.data)
         </script>
       </div>
     </div>
